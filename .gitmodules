@@ -1,3 +1,6 @@
 [submodule "cub3D/cub3D/MLX42"]
 	path = cub3D/cub3D/MLX42
 	url = https://github.com/codam-coding-college/MLX42.git
+[submodule "cub3D/MLX42"]
+	path = cub3D/MLX42
+	url = https://github.com/codam-coding-college/MLX42.git
