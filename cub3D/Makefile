@@ -6,8 +6,12 @@ INC_DIR = ./includes/
 LIB_DIR = ./libft/
 #~~~~ Src Directories ~~~~
 PARS_DIR = parse/
+ERROR_DIR = error/
 #~~~~~~ Src Files ~~~~~~~
-SRCS = main.c
+SRCS = main.c\
+	$(PARS_DIR)init_parse.c\
+	$(PARS_DIR)parse_map.c\
+	$(ERROR_DIR)error.c
 #~~~~~~ Obj Files ~~~~~~~
 OBJ_FILES = $(SRCS:.c=.o)
 OBJS = $(addprefix $(OBJ_DIR), $(OBJ_FILES))
@@ -15,7 +19,7 @@ OBJS = $(addprefix $(OBJ_DIR), $(OBJ_FILES))
 INCLUDES = $(INC_DIR)cub3d.h\
 #~~~~~~ Compiling ~~~~~~~
 CC = cc
-CFLAGS = -Wall -Wextra -Werror -Wunreachable-code -Ofast
+CFLAGS = -Wall -Wextra -Werror -g3 #-Wunreachable-code -Ofast 
 MAKEFLAGS = --no-print-directory
 LFLAGS = -L libft -lft
 RM = rm -f

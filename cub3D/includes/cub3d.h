@@ -6,7 +6,7 @@
 /*   By: mignavar <mignavar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/07 16:00:05 by mignavar          #+#    #+#             */
-/*   Updated: 2025/04/07 17:42:11 by mignavar         ###   ########.fr       */
+/*   Updated: 2025/04/08 18:09:24 by mignavar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,7 @@
 # include <stdio.h>
 # include <stdlib.h>
 # include <unistd.h>
+# include <stdbool.h>
 
 # define TRUE 1
 # define FALSE 0
@@ -35,6 +36,7 @@ typedef struct s_data	t_data;
 
 struct s_data
 {
+	char			**doc;
 	char			**map;
 	char			*no_texture;
 	char			*so_texture;
@@ -44,5 +46,16 @@ struct s_data
 	unsigned int	c_color;
 	int				total_line;
 };
+
+//----------- PARSE -----------------
+//init_parse.c
+bool	init_parse(t_data *data, char *arg);
+
+//parse_map.c
+bool	parse_map(t_data *data);
+
+//----------- ERROR -----------------
+void	print_error(char *text);
+void	free_all(t_data *data);
 
 #endif
