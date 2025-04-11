@@ -19,7 +19,7 @@ OBJS = $(addprefix $(OBJ_DIR), $(OBJ_FILES))
 INCLUDES = $(INC_DIR)cub3d.h\
 #~~~~~~ Compiling ~~~~~~~
 CC = cc
-CFLAGS = -Wall -Wextra -Werror -g3 #-Wunreachable-code -Ofast 
+CFLAGS = -Wall -Wextra -Werror -g3 -O0 -fsanitize=address,leak #-Wunreachable-code -Ofast 
 MAKEFLAGS = --no-print-directory
 LFLAGS = -L libft -lft
 RM = rm -f

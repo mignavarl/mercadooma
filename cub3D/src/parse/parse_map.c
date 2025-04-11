@@ -6,7 +6,7 @@
 /*   By: mignavar <mignavar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/08 17:27:22 by mignavar          #+#    #+#             */
-/*   Updated: 2025/04/08 18:17:35 by mignavar         ###   ########.fr       */
+/*   Updated: 2025/04/10 12:36:10 by mignavar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,6 +43,6 @@ bool	parse_map(t_data *data)
 		free_all(data);
 		return (FALSE);
 	}
-	printf(GREEN"Letras bien"END"\n");
+	//printf(GREEN"Letras bien"END"\n");
 	return (TRUE);
 }

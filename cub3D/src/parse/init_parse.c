@@ -6,7 +6,7 @@
 /*   By: mignavar <mignavar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/08 11:47:35 by mignavar          #+#    #+#             */
-/*   Updated: 2025/04/08 18:20:22 by mignavar         ###   ########.fr       */
+/*   Updated: 2025/04/11 20:38:36 by mignavar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ bool	extract_doc(t_data *data, char *arg)
 	fd = open(arg, O_RDONLY);
 	if (fd < 0)
 		return (FALSE);
-	data->doc = ft_calloc(data->total_line + 1, sizeof(char *));
+	data->doc = ft_calloc(data->total_line + 2, sizeof(char *));
 	if (!data->doc)
 		return (FALSE);
 	line = 0;
@@ -32,6 +32,7 @@ bool	extract_doc(t_data *data, char *arg)
 		line++;
 	}
 	close(fd);
+	data->doc[line] = NULL;
 	return (TRUE);
 }
 
@@ -50,7 +51,7 @@ bool	extract_map(t_data *data)
 	m_line = 0;
 	while (line <= data->total_line)
 	{
-		data->map[m_line] = ft_strtrim(ft_strdup(data->doc[line]), "\n");
+		data->map[m_line] = ft_substr(data->doc[line], 0, ft_strlen(data->doc[line]) - 1);
 		m_line++;
 		line++;
 	}
@@ -78,7 +79,6 @@ bool	init_parse(t_data *data, char *arg)
 		print_error("Problem with document");
 		return (FALSE);
 	}
-	printf(RED"Total line = %d"END"\n", data->total_line);
 	if (!extract_map(data))
 		return (FALSE);
 	print_map(data);
