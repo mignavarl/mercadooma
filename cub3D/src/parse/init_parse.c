@@ -6,7 +6,7 @@
 /*   By: mignavar <mignavar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/08 11:47:35 by mignavar          #+#    #+#             */
-/*   Updated: 2025/04/11 20:38:36 by mignavar         ###   ########.fr       */
+/*   Updated: 2025/04/14 11:43:23 by mignavar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,7 +51,7 @@ bool	extract_map(t_data *data)
 	m_line = 0;
 	while (line <= data->total_line)
 	{
-		data->map[m_line] = ft_substr(data->doc[line], 0, ft_strlen(data->doc[line]) - 1);
+		data->map[m_line] = ft_strtrim(data->doc[line], "\n");
 		m_line++;
 		line++;
 	}

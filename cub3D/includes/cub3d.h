@@ -6,7 +6,7 @@
 /*   By: mignavar <mignavar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/07 16:00:05 by mignavar          #+#    #+#             */
-/*   Updated: 2025/04/08 18:09:24 by mignavar         ###   ########.fr       */
+/*   Updated: 2025/04/14 12:48:06 by mignavar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,11 +48,9 @@ struct s_data
 };
 
 //----------- PARSE -----------------
-//init_parse.c
 bool	init_parse(t_data *data, char *arg);
-
-//parse_map.c
 bool	parse_map(t_data *data);
+bool	check_holes(char **map, int total_line);
 
 //----------- ERROR -----------------
 void	print_error(char *text);
