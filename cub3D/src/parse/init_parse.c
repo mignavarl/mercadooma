@@ -6,7 +6,7 @@
 /*   By: mignavar <mignavar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/08 11:47:35 by mignavar          #+#    #+#             */
-/*   Updated: 2025/04/15 18:33:51 by mignavar         ###   ########.fr       */
+/*   Updated: 2025/04/15 19:01:54 by mignavar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,8 +42,10 @@ bool	extract_map(t_data *data)
 	int	m_line;
 
 	line = data->total_line;
-	while (ft_strcmp(&data->doc[line][0], "\n"))
+	while (ft_strcmp(&data->doc[line][0], "\n") && line > 0)
 		line--;
+	if (line == 0)
+		return (print_error("Map no separated"), FALSE);
 	data->map = ft_calloc((data->total_line - line) + 1, sizeof(char *));
 	if (!data->map)
 		return (FALSE);
