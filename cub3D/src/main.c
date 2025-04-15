@@ -6,7 +6,7 @@
 /*   By: mignavar <mignavar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/07 15:59:40 by mignavar          #+#    #+#             */
-/*   Updated: 2025/04/14 18:03:32 by mignavar         ###   ########.fr       */
+/*   Updated: 2025/04/15 18:17:06 by mignavar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,6 +58,6 @@ int	main(int argc, char **argv)
 	}
 	if (!init_parse(&data, argv[1]))
 		return (1);
-	free_all(&data);
+	free_texture(&data, 5);
 	return (0);
 }

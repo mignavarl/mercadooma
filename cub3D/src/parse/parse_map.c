@@ -6,7 +6,7 @@
 /*   By: mignavar <mignavar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/08 17:27:22 by mignavar          #+#    #+#             */
-/*   Updated: 2025/04/14 16:34:05 by mignavar         ###   ########.fr       */
+/*   Updated: 2025/04/15 11:25:20 by mignavar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -110,13 +110,13 @@ bool	parse_map(t_data *data)
 {
 	if (!map_letter(data->map))
 	{
-		free_all(data);
+		free_map(data);
 		return (FALSE);
 	}
 	if (!view_borders(data->map))
 	{
 		print_error("Map not closed");
-		free_all(data);
+		free_map(data);
 		return (FALSE);
 	}
 	printf(GREEN"Mapa bien"END"\n");

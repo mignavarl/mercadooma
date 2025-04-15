@@ -10,6 +10,7 @@ ERROR_DIR = error/
 #~~~~~~ Src Files ~~~~~~~
 SRCS = main.c\
 	$(PARS_DIR)check_holes.c\
+	$(PARS_DIR)extract_textures.c\
 	$(PARS_DIR)init_parse.c\
 	$(PARS_DIR)parse_map.c\
 	$(ERROR_DIR)error.c

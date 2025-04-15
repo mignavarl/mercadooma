@@ -6,7 +6,7 @@
 /*   By: mignavar <mignavar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/08 11:47:35 by mignavar          #+#    #+#             */
-/*   Updated: 2025/04/14 11:43:23 by mignavar         ###   ########.fr       */
+/*   Updated: 2025/04/15 18:33:51 by mignavar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,14 +75,13 @@ void	print_map(t_data *data)
 bool	init_parse(t_data *data, char *arg)
 {
 	if (!extract_doc(data, arg))
-	{
-		print_error("Problem with document");
-		return (FALSE);
-	}
+		return (print_error("Problem with document"), FALSE);
 	if (!extract_map(data))
 		return (FALSE);
 	print_map(data);
 	if (!parse_map(data))
 		return (FALSE);
+	if (!extract_texture(data->doc, data))
+		return (print_error("Texture not found"), FALSE);
 	return (TRUE);
 }

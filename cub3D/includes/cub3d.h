@@ -6,7 +6,7 @@
 /*   By: mignavar <mignavar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/07 16:00:05 by mignavar          #+#    #+#             */
-/*   Updated: 2025/04/14 12:48:06 by mignavar         ###   ########.fr       */
+/*   Updated: 2025/04/15 18:16:44 by mignavar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,9 +51,11 @@ struct s_data
 bool	init_parse(t_data *data, char *arg);
 bool	parse_map(t_data *data);
 bool	check_holes(char **map, int total_line);
+bool	extract_texture(char **doc, t_data *data);
 
 //----------- ERROR -----------------
 void	print_error(char *text);
-void	free_all(t_data *data);
+void	free_map(t_data *data);
+void	free_texture(t_data *data, int tx);
 
 #endif

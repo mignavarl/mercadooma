@@ -12,7 +12,7 @@ SRC =ft_atoi.c ft_bzero.c ft_calloc.c ft_isalnum.c ft_isalpha.c ft_isascii.c ft_
 OBJ = $(SRC:.c=.o)
 
 CC =   cc
-CFLAGS = -Wall -Wextra -Werror -g3 -O0 -fsanitize=address,leak
+CFLAGS = -Wall -Wextra -Werror -g3 -O0
 
 all: $(NAME)
 
