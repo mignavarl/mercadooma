@@ -6,7 +6,7 @@
 /*   By: mignavar <mignavar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/07 15:59:40 by mignavar          #+#    #+#             */
-/*   Updated: 2025/04/15 18:17:06 by mignavar         ###   ########.fr       */
+/*   Updated: 2025/04/16 15:41:06 by mignavar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,18 @@ int	count_line(char *doc)
 	return (lines - 1);
 }
 
+void	free_all(t_data *data)
+{
+	ft_free_double(&data->doc);
+	ft_free_double(&data->map);
+	free(data->no_texture);
+	free(data->so_texture);
+	free(data->ea_texture);
+	free(data->we_texture);
+	free(data->c_color);
+	free(data->f_color);
+}
+
 int	main(int argc, char **argv)
 {
 	t_data	data;
@@ -58,6 +70,6 @@ int	main(int argc, char **argv)
 	}
 	if (!init_parse(&data, argv[1]))
 		return (1);
-	free_texture(&data, 5);
+	free_all(&data);
 	return (0);
 }

@@ -6,13 +6,13 @@
 /*   By: mignavar <mignavar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/15 11:27:26 by mignavar          #+#    #+#             */
-/*   Updated: 2025/04/15 18:17:44 by mignavar         ###   ########.fr       */
+/*   Updated: 2025/04/16 15:55:30 by mignavar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
-int	search_texture(char **doc, char *texture, char *dimin, int tx)
+char	*search_texture(char **doc, char *texture, char *dimin)
 {
 	int	line;
 	int	pos;
@@ -21,21 +21,24 @@ int	search_texture(char **doc, char *texture, char *dimin, int tx)
 	while (doc[line])
 	{
 		pos = 0;
-		while (doc[line][pos] <= ' ')
+		while (doc[line][pos] <= ' ' && doc[line][pos])
 			pos++;
 		if (ft_strncmp(&doc[line][pos], dimin, 2) == 0)
 		{
-			while (doc[line][pos] <= ' ')
+			pos += 2;
+			while (doc[line][pos] <= ' ' && doc[line][pos])
 				pos++;
 			texture = ft_substr(doc[line], pos,
-				((int)ft_strlen(doc[line]) - pos));
+					(ft_strlen(doc[line]) - pos - 1));
 			if (!texture)
-				return (-1);
-			return (tx + 1);
+				return (NULL);
+			if (ft_strlen(texture) <= 1)
+				return (free(texture), NULL);
+			return (texture);
 		}
 		line++;
 	}
-	return (tx);
+	return (NULL);
 }
 
 void	free_texture(t_data *data, int tx)
@@ -57,25 +60,21 @@ bool	extract_texture(char **doc, t_data *data)
 	int	tx;
 
 	tx = 0;
-	tx = search_texture(doc, data->no_texture, "NO", tx);
-	if (tx < 1)
+	data->no_texture = search_texture(doc, data->no_texture, "NO");
+	if (!data->no_texture)
 		return (free_texture(data, tx), FALSE);
-	tx = search_texture(doc, data->so_texture, "SO", tx);
-	if (tx < 2)
+	tx++;
+	data->so_texture = search_texture(doc, data->so_texture, "SO");
+	if (!data->so_texture)
 		return (free_texture(data, tx), FALSE);
-	tx = search_texture(doc, data->ea_texture, "EA", tx);
-	if (tx < 3)
+	tx++;
+	data->ea_texture = search_texture(doc, data->ea_texture, "EA");
+	if (!data->ea_texture)
 		return (free_texture(data, tx), FALSE);
-	tx = search_texture(doc, data->we_texture, "WE", tx);
-	if (tx < 4)
+	tx++;
+	data->we_texture = search_texture(doc, data->we_texture, "WE");
+	if (!data->we_texture)
 		return (free_texture(data, tx), FALSE);
-	/*TODO:search color
-	tx = search_texture(doc, data->f_color, "F", tx);
-	if (tx != 4)
-		return (free_texture(data, doc, tx), FALSE);
-	tx = search_texture(doc, data->c_color, "C", tx);
-	if (tx != 5)
-		return (free_texture(data, doc, tx), FALSE);*/
-	printf("TODAS LAS TEXTURAS:\nNO = %s\nSO = %s\nEA = %s\nWE = %s\n", data->no_texture, data->so_texture, data->ea_texture, data->we_texture);
+	printf("TODAS LAS TEXTURAS:\nNO = '%s'\nSO = '%s'\nEA = '%s'\nWE = '%s'\n", data->no_texture, data->so_texture, data->ea_texture, data->we_texture);
 	return (TRUE);
 }

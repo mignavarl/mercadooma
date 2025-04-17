@@ -6,7 +6,7 @@
 /*   By: mignavar <mignavar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/07 16:00:05 by mignavar          #+#    #+#             */
-/*   Updated: 2025/04/15 18:16:44 by mignavar         ###   ########.fr       */
+/*   Updated: 2025/04/17 12:57:01 by mignavar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,22 +36,36 @@ typedef struct s_data	t_data;
 
 struct s_data
 {
-	char			**doc;
-	char			**map;
-	char			*no_texture;
-	char			*so_texture;
-	char			*ea_texture;
-	char			*we_texture;
-	unsigned int	f_color;
-	unsigned int	c_color;
-	int				total_line;
+	char	**doc;
+	char	**map;
+	char	*no_texture;
+	char	*so_texture;
+	char	*ea_texture;
+	char	*we_texture;
+	char	*f_color;
+	char	*c_color;
+	int		total_line;
+	int		ceiling;
+	int		floor;
 };
+
+//----------- MAIN  -----------------
+void	free_all(t_data *data);
 
 //----------- PARSE -----------------
 bool	init_parse(t_data *data, char *arg);
 bool	parse_map(t_data *data);
 bool	check_holes(char **map, int total_line);
 bool	extract_texture(char **doc, t_data *data);
+void	free_texture(t_data *data, int tx);
+bool	extract_color(char **doc, t_data *data);
+bool	extract_rgba(t_data *data);
+
+//find_rgb
+char	*find_red(char *red, char *color);
+char	*find_green(char *green, char *color);
+char	*find_blue(char *blue, char *color);
+bool	check_str_color(char *color);
 
 //----------- ERROR -----------------
 void	print_error(char *text);
