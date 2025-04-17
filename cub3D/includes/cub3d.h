@@ -6,7 +6,7 @@
 /*   By: mignavar <mignavar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/07 16:00:05 by mignavar          #+#    #+#             */
-/*   Updated: 2025/04/17 12:57:01 by mignavar         ###   ########.fr       */
+/*   Updated: 2025/04/17 17:00:42 by mignavar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,6 +33,7 @@
 # define END	"\001\033[0m\002"
 
 typedef struct s_data	t_data;
+typedef struct s_mlx	t_mlx;
 
 struct s_data
 {
@@ -47,6 +48,15 @@ struct s_data
 	int		total_line;
 	int		ceiling;
 	int		floor;
+};
+
+struct S_mlx
+{
+	void*		window;
+	void*		context;
+	int			width;
+	int			height;
+	double		delta_time;
 };
 
 //----------- MAIN  -----------------

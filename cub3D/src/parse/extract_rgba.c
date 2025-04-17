@@ -6,15 +6,15 @@
 /*   By: mignavar <mignavar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/16 17:38:40 by mignavar          #+#    #+#             */
-/*   Updated: 2025/04/17 16:02:26 by mignavar         ###   ########.fr       */
+/*   Updated: 2025/04/17 17:12:50 by mignavar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
-int get_rgba(int r, int g, int b, int a)
+int	get_rgba(int r, int g, int b, int a)
 {
-    return (r << 24 | g << 16 | b << 8 | a);
+	return (r << 24 | g << 16 | b << 8 | a);
 }
 
 void	free_colors(char *r, char *g, char *b)

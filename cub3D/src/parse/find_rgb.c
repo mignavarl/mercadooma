@@ -6,7 +6,7 @@
 /*   By: mignavar <mignavar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/17 12:17:22 by mignavar          #+#    #+#             */
-/*   Updated: 2025/04/17 15:54:40 by mignavar         ###   ########.fr       */
+/*   Updated: 2025/04/17 18:00:35 by mignavar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ char	*find_red(char *red, char *color)
 		i++;
 	red = ft_substr(color, 0, i);
 	if (!red)
-		return(NULL);
+		return (NULL);
 	i = ft_atoi(red);
 	if (i > 255 || i < 0)
 		return (NULL);
@@ -32,7 +32,7 @@ char	*find_green(char *green, char *color)
 {
 	int	i;
 	int	init;
-	
+
 	i = 0;
 	while (color[i] != ',')
 		i++;

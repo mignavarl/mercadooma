@@ -6,7 +6,7 @@
 /*   By: mignavar <mignavar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/08 11:47:35 by mignavar          #+#    #+#             */
-/*   Updated: 2025/04/16 16:47:50 by mignavar         ###   ########.fr       */
+/*   Updated: 2025/04/17 17:58:46 by mignavar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -89,6 +89,6 @@ bool	init_parse(t_data *data, char *arg)
 		return (print_error("Color not found"), FALSE);
 	if (!extract_rgba(data))
 		return (print_error("The color range has to be between 0 - 255"),
-				FALSE);
+			FALSE);
 	return (TRUE);
 }

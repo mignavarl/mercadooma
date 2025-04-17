@@ -6,7 +6,7 @@
 /*   By: mignavar <mignavar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/16 11:20:52 by mignavar          #+#    #+#             */
-/*   Updated: 2025/04/16 15:59:36 by mignavar         ###   ########.fr       */
+/*   Updated: 2025/04/17 17:59:22 by mignavar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,7 @@ char	*search_color(char **doc, char *color, char *dimin)
 
 void	free_color(t_data *data, int col)
 {
-	free_texture(data, 5);	
+	free_texture(data, 5);
 	if (col >= 1)
 		free(data->c_color);
 	if (col >= 2)

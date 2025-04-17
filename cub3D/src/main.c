@@ -6,7 +6,7 @@
 /*   By: mignavar <mignavar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/07 15:59:40 by mignavar          #+#    #+#             */
-/*   Updated: 2025/04/16 15:41:06 by mignavar         ###   ########.fr       */
+/*   Updated: 2025/04/17 16:51:06 by mignavar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,22 +52,13 @@ int	main(int argc, char **argv)
 	t_data	data;
 
 	if (argc != 2)
-	{
-		print_error("Incorrect number of arguments");
-		return (1);
-	}
+		return (print_error("Incorrect number of arguments"), 1);
 	if (ft_strncmp(&argv[1][(ft_strlen(argv[1]) - 4)], ".cub", 4) != 0)
-	{
-		print_error("Extension not valid");
-		return (1);
-	}
+		return (print_error("Extension not valid"), 1);
 	ft_bzero(&data, sizeof(t_data));
 	data.total_line = count_line(argv[1]);
-	if (data.total_line < 0)
-	{
-		print_error("Invalid document");
-		return (1);
-	}
+	if (data.total_line < 10)
+		return (print_error("Invalid document"), 1);
 	if (!init_parse(&data, argv[1]))
 		return (1);
 	free_all(&data);
