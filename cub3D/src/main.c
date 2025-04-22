@@ -6,7 +6,7 @@
 /*   By: mignavar <mignavar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/07 15:59:40 by mignavar          #+#    #+#             */
-/*   Updated: 2025/04/17 16:51:06 by mignavar         ###   ########.fr       */
+/*   Updated: 2025/04/22 11:39:37 by mignavar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,6 +60,8 @@ int	main(int argc, char **argv)
 	if (data.total_line < 10)
 		return (print_error("Invalid document"), 1);
 	if (!init_parse(&data, argv[1]))
+		return (1);
+	if (!init_game(&data))
 		return (1);
 	free_all(&data);
 	return (0);

@@ -1,27 +1,30 @@
 NAME = cub3D
 #~~~~~~ Directories ~~~~~~
-SRC_DIR = ./src/
-OBJ_DIR = ./obj/
 INC_DIR = ./includes/
 LIB_DIR = ./libft/
+OBJ_DIR = ./obj/
+SRC_DIR = ./src/
 #~~~~ Src Directories ~~~~
-PARS_DIR = parse/
 ERROR_DIR = error/
+GAME_DIR = game/
+PARS_DIR = parse/
 #~~~~~~ Src Files ~~~~~~~
 SRCS = main.c\
+	$(ERROR_DIR)error.c\
+	$(GAME_DIR)init_game.c\
 	$(PARS_DIR)check_holes.c\
 	$(PARS_DIR)extract_colors.c\
 	$(PARS_DIR)extract_rgba.c\
 	$(PARS_DIR)extract_textures.c\
 	$(PARS_DIR)find_rgb.c\
 	$(PARS_DIR)init_parse.c\
-	$(PARS_DIR)parse_map.c\
-	$(ERROR_DIR)error.c
+	$(PARS_DIR)parse_map.c
 #~~~~~~ Obj Files ~~~~~~~
 OBJ_FILES = $(SRCS:.c=.o)
 OBJS = $(addprefix $(OBJ_DIR), $(OBJ_FILES))
 #~~~~~~ Includes ~~~~~~~~
-INCLUDES = $(INC_DIR)cub3d.h\
+INCLUDES =	$(INC_DIR)cub3d.h
+
 #~~~~~~ Compiling ~~~~~~~
 CC = cc
 CFLAGS = -Wall -Wextra -Werror -g3 -O0 -fsanitize=address,leak #-Wunreachable-code -Ofast 
@@ -50,7 +53,7 @@ obj:
 
 $(NAME): $(OBJS)
 	@$(MAKE) -C libft
-	$(CC) $(OBJS) $(CFLAGS) $(LFLAGS) -o $(NAME)
+	$(CC) $(OBJS) $(CFLAGS) $(MLXLIBS) $(LFLAGS) -o $(NAME)
 
 clean:
 	@${RM} -rf $(OBJ_DIR)
