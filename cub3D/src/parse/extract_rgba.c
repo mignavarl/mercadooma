@@ -6,7 +6,7 @@
 /*   By: mignavar <mignavar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/16 17:38:40 by mignavar          #+#    #+#             */
-/*   Updated: 2025/04/17 17:12:50 by mignavar         ###   ########.fr       */
+/*   Updated: 2025/04/23 16:41:31 by mignavar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -87,6 +87,6 @@ bool	extract_rgba(t_data *data)
 		free_all(data);
 		return (NULL);
 	}
-	printf("RGBA:\nCeiling =\t'%d'\nFloor =\t\t'%d'\n", data->ceiling, data->floor);
+	printf("RGBA:\nCeiling\t= '%d'\nFloor\t= '%d'\n", data->ceiling, data->floor);
 	return (TRUE);
 }
