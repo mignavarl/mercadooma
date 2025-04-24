@@ -6,7 +6,7 @@
 /*   By: mignavar <mignavar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/07 16:00:05 by mignavar          #+#    #+#             */
-/*   Updated: 2025/04/22 15:30:54 by mignavar         ###   ########.fr       */
+/*   Updated: 2025/04/24 17:15:41 by mignavar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@
 # define END	"\001\033[0m\002"
 
 typedef struct s_data	t_data;
-typedef struct s_mlx	t_mlx;
+typedef struct s_game	t_game;
 
 struct s_data
 {
@@ -51,20 +51,30 @@ struct s_data
 	int		floor;
 };
 
-struct s_mlx
+struct s_game
 {
-	void*		window;
-	void*		context;
-	int			width;
-	int			height;
-	double		delta_time;
+	mlx_t			*mlx;
+	mlx_texture_t	*tx_north;
+	mlx_texture_t	*tx_south;
+	mlx_texture_t	*tx_east;
+	mlx_texture_t	*tx_west;
+	mlx_image_t		*im_north;
+	mlx_image_t		*im_south;
+	mlx_image_t		*im_east;
+	mlx_image_t		*im_west;
+	mlx_texture_t	*icon;
 };
+
 
 //----------- MAIN ------------------
 void	free_all(t_data *data);
 
 //----------- GAME ------------------
 bool	init_game(t_data *data);
+
+//textures
+bool	save_textures(t_game *game, t_data *data);
+void	free_game_textures(t_game *game);
 
 //----------- PARSE -----------------
 bool	check_holes(char **map, int total_line);

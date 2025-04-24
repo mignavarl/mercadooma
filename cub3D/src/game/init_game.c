@@ -6,7 +6,7 @@
 /*   By: mignavar <mignavar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/22 11:39:00 by mignavar          #+#    #+#             */
-/*   Updated: 2025/04/23 16:43:39 by mignavar         ###   ########.fr       */
+/*   Updated: 2025/04/24 17:16:34 by mignavar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,34 +51,27 @@ void my_keyhook(mlx_key_data_t keydata, void* param)
 
 bool	init_game(t_data *data)
 {
-	mlx_t	*mlx;
+	t_game	game;
+
 	// MLX allows you to define its core behaviour before startup.
+	ft_bzero(&game, sizeof(t_game));
 	mlx_set_setting(MLX_DECORATED, true);
-	mlx = mlx_init(256, 256, "42Balls", true);
-	if (!mlx)
+	game.mlx = mlx_init(256, 256, "42Balls", true);
+	if (!game.mlx)
 		ft_error();
 
 	/* Do stuff */
-	mlx_texture_t* texture = mlx_load_png(data->no_texture);
-	if (!texture)
-        ft_error();
-	
-	// Convert texture to a displayable image
-	mlx_image_t* img = mlx_texture_to_image(mlx, texture);
-	if (!img)
-        ft_error();
-
-	// Display the image
-	if (mlx_image_to_window(mlx, img, 0, 0) < 0)
-        ft_error();
-
+	mlx_set_icon(game.mlx, game.icon);//TODO: poner icono
+	if (!save_textures(&game, data))
+		return (free_all(data), FALSE);
+	if (!save_images(&game, data))
+		return (free_all(data), FALSE);
+	//--------------
 	// Register a hook and pass mlx as an optional param.
 	// NOTE: Do this before calling mlx_loop!
 	//mlx_loop_hook(mlx, ft_hook, mlx);
-	mlx_key_hook(mlx, &my_keyhook, data);
-	mlx_loop(mlx);
-	mlx_delete_image(mlx, img);
-	mlx_delete_texture(texture);
-	mlx_terminate(mlx);
+	mlx_key_hook(game.mlx, &my_keyhook, data);
+	mlx_loop(game.mlx);
+	mlx_terminate(game.mlx);
 	return (TRUE);
 }

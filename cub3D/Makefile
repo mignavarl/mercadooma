@@ -12,6 +12,8 @@ PARS_DIR = parse/
 SRCS = main.c\
 	$(ERROR_DIR)error.c\
 	$(GAME_DIR)init_game.c\
+	$(GAME_DIR)images.c\
+	$(GAME_DIR)textures.c\
 	$(PARS_DIR)check_holes.c\
 	$(PARS_DIR)extract_colors.c\
 	$(PARS_DIR)extract_rgba.c\
