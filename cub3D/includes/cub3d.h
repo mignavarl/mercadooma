@@ -6,7 +6,7 @@
 /*   By: mignavar <mignavar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/07 16:00:05 by mignavar          #+#    #+#             */
-/*   Updated: 2025/04/24 17:15:41 by mignavar         ###   ########.fr       */
+/*   Updated: 2025/04/25 11:38:26 by mignavar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,6 +49,7 @@ struct s_data
 	int		total_line;
 	int		ceiling;
 	int		floor;
+	t_game	*game;
 };
 
 struct s_game
@@ -75,6 +76,10 @@ bool	init_game(t_data *data);
 //textures
 bool	save_textures(t_game *game, t_data *data);
 void	free_game_textures(t_game *game);
+
+//images
+bool	save_images(t_game *game);
+void	free_images(t_game *game);
 
 //----------- PARSE -----------------
 bool	check_holes(char **map, int total_line);

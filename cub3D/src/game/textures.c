@@ -6,7 +6,7 @@
 /*   By: mignavar <mignavar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/24 12:30:01 by mignavar          #+#    #+#             */
-/*   Updated: 2025/04/24 17:16:19 by mignavar         ###   ########.fr       */
+/*   Updated: 2025/04/25 12:00:25 by mignavar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,6 @@ bool	save_textures(t_game *game, t_data *data)
 	game->tx_west = mlx_load_png(data->we_texture);
 	game->icon = mlx_load_png("./textures/icon.png");
 	if (!game->tx_north || !game->tx_south || !game->tx_east || !game->tx_west)
-		return (free_textures(game), FALSE);
+		return (free_game_textures(game), FALSE);
 	return (TRUE);
 }

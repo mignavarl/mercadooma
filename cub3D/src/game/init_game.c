@@ -6,7 +6,7 @@
 /*   By: mignavar <mignavar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/22 11:39:00 by mignavar          #+#    #+#             */
-/*   Updated: 2025/04/24 17:16:34 by mignavar         ###   ########.fr       */
+/*   Updated: 2025/04/25 12:02:12 by mignavar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,10 +43,10 @@ void my_keyhook(mlx_key_data_t keydata, void* param)
 		puts("!");
 	if (keydata.key == MLX_KEY_ESCAPE && keydata.action == MLX_PRESS)
 	{
+		free_images(data->game);
 		free_all(data);
 		exit(0);
 	}
-		
 }
 
 bool	init_game(t_data *data)
@@ -54,6 +54,7 @@ bool	init_game(t_data *data)
 	t_game	game;
 
 	// MLX allows you to define its core behaviour before startup.
+	data->game = &game;
 	ft_bzero(&game, sizeof(t_game));
 	mlx_set_setting(MLX_DECORATED, true);
 	game.mlx = mlx_init(256, 256, "42Balls", true);
@@ -61,10 +62,10 @@ bool	init_game(t_data *data)
 		ft_error();
 
 	/* Do stuff */
-	mlx_set_icon(game.mlx, game.icon);//TODO: poner icono
 	if (!save_textures(&game, data))
 		return (free_all(data), FALSE);
-	if (!save_images(&game, data))
+	mlx_set_icon(game.mlx, game.icon);//TODO: poner icono
+	if (!save_images(&game))
 		return (free_all(data), FALSE);
 	//--------------
 	// Register a hook and pass mlx as an optional param.

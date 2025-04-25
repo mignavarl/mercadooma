@@ -1,8 +1,8 @@
-SO ./path_to_the_south_texture
-WE ./path_to_the_west_texture
+SO ./textures/Pink.png
+WE ./textures/Pink.png
 F 50,100,30
 C 225,30,0
-EA ./path_to_the_east_texture
+EA ./textures/Pink.png
 NO ./textures/Pink.png
 
        111111 1111111111111111111

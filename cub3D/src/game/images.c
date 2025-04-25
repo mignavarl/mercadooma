@@ -6,7 +6,7 @@
 /*   By: mignavar <mignavar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/24 12:47:49 by mignavar          #+#    #+#             */
-/*   Updated: 2025/04/24 12:54:06 by mignavar         ###   ########.fr       */
+/*   Updated: 2025/04/25 11:27:13 by mignavar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ void	free_images(t_game *game)
 		mlx_delete_image(game->mlx, game->im_west);
 }
 
-bool	save_images(t_game *game, t_data *data)
+bool	save_images(t_game *game)
 {
 	game->im_north = mlx_texture_to_image(game->mlx, game->tx_north);
 	game->im_south = mlx_texture_to_image(game->mlx, game->tx_south);
