@@ -6,7 +6,7 @@
 /*   By: mignavar <mignavar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/22 11:39:00 by mignavar          #+#    #+#             */
-/*   Updated: 2025/04/25 12:02:12 by mignavar         ###   ########.fr       */
+/*   Updated: 2025/04/28 12:22:47 by mignavar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,15 +64,16 @@ bool	init_game(t_data *data)
 	/* Do stuff */
 	if (!save_textures(&game, data))
 		return (free_all(data), FALSE);
-	mlx_set_icon(game.mlx, game.icon);//TODO: poner icono
+	mlx_set_icon(game.mlx, game.icon);
 	if (!save_images(&game))
 		return (free_all(data), FALSE);
 	//--------------
 	// Register a hook and pass mlx as an optional param.
 	// NOTE: Do this before calling mlx_loop!
-	//mlx_loop_hook(mlx, ft_hook, mlx);
+	//mlx_loop_hook(game.mlx, ft_hook, game.mlx);
 	mlx_key_hook(game.mlx, &my_keyhook, data);
 	mlx_loop(game.mlx);
 	mlx_terminate(game.mlx);
+	free_images(&game);
 	return (TRUE);
 }

@@ -6,7 +6,7 @@
 /*   By: mignavar <mignavar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/07 15:59:40 by mignavar          #+#    #+#             */
-/*   Updated: 2025/04/22 11:39:37 by mignavar         ###   ########.fr       */
+/*   Updated: 2025/04/28 12:16:57 by mignavar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,6 +37,7 @@ int	count_line(char *doc)
 
 void	free_all(t_data *data)
 {
+	
 	ft_free_double(&data->doc);
 	ft_free_double(&data->map);
 	free(data->no_texture);

@@ -6,7 +6,7 @@
 /*   By: mignavar <mignavar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/08 11:47:35 by mignavar          #+#    #+#             */
-/*   Updated: 2025/04/17 17:58:46 by mignavar         ###   ########.fr       */
+/*   Updated: 2025/04/28 11:32:26 by mignavar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,7 +60,7 @@ bool	extract_map(t_data *data)
 	return (TRUE);
 }
 
-void	print_map(t_data *data)
+void	print_map(t_data *data)//TODO: BORRAR
 {
 	int	i;
 
@@ -74,15 +74,44 @@ void	print_map(t_data *data)
 	printf(YELLOW"FIN MAPA"END"\n");
 }
 
+void	player_pos(t_data *data, char **map)
+{
+	int		line;
+	int		pos;
+	t_pj	pj;
+
+	data->pj = &pj;
+	ft_bzero(&pj, sizeof(t_pj));
+	line = 0;
+	while (map[line])
+	{
+		pos = 0;
+		while (map[line][pos])
+		{
+			if (map[line][pos] == 'N' || map[line][pos] == 'S'
+				|| map[line][pos] == 'E' || map[line][pos] == 'W')
+				{
+					data->pj->line = line;
+					data->pj->pos = pos;
+					data->pj->view = map[line][pos];
+					return ;
+				}
+			pos++;
+		}
+		line++;
+	}
+}
+
 bool	init_parse(t_data *data, char *arg)
 {
 	if (!extract_doc(data, arg))
 		return (print_error("Problem with document"), FALSE);
 	if (!extract_map(data))
 		return (FALSE);
-	print_map(data);
+	print_map(data);//TODO: BORRAR
 	if (!parse_map(data))
 		return (FALSE);
+	player_pos(data, data->map);
 	if (!extract_texture(data->doc, data))
 		return (print_error("Texture not found"), FALSE);
 	if (!extract_color(data->doc, data))

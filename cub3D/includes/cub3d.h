@@ -6,7 +6,7 @@
 /*   By: mignavar <mignavar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/07 16:00:05 by mignavar          #+#    #+#             */
-/*   Updated: 2025/04/25 11:38:26 by mignavar         ###   ########.fr       */
+/*   Updated: 2025/04/28 11:24:41 by mignavar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,7 @@
 
 typedef struct s_data	t_data;
 typedef struct s_game	t_game;
+typedef struct s_pj		t_pj;
 
 struct s_data
 {
@@ -50,6 +51,7 @@ struct s_data
 	int		ceiling;
 	int		floor;
 	t_game	*game;
+	t_pj	*pj;
 };
 
 struct s_game
@@ -64,6 +66,14 @@ struct s_game
 	mlx_image_t		*im_east;
 	mlx_image_t		*im_west;
 	mlx_texture_t	*icon;
+};
+
+struct s_pj
+{
+	int		line;
+	int		pos;
+	char	view;
+	int		angle;
 };
 
 
