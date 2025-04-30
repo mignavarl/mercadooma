@@ -6,7 +6,7 @@
 /*   By: mignavar <mignavar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/22 11:39:00 by mignavar          #+#    #+#             */
-/*   Updated: 2025/04/28 12:22:47 by mignavar         ###   ########.fr       */
+/*   Updated: 2025/04/30 16:48:18 by mignavar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,8 +43,10 @@ void my_keyhook(mlx_key_data_t keydata, void* param)
 		puts("!");
 	if (keydata.key == MLX_KEY_ESCAPE && keydata.action == MLX_PRESS)
 	{
+		mlx_close_window(data->game->mlx);
 		free_images(data->game);
 		free_all(data);
+		mlx_terminate(data->game->mlx);
 		exit(0);
 	}
 }

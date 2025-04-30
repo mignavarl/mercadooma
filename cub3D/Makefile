@@ -29,7 +29,7 @@ INCLUDES =	$(INC_DIR)cub3d.h
 
 #~~~~~~ Compiling ~~~~~~~
 CC = cc
-CFLAGS = -Wall -Wextra -Werror -g3 -O0 -fsanitize=address,leak #-Wunreachable-code -Ofast 
+CFLAGS = -Wall -Wextra -Werror -g3 -O0 #-fsanitize=address,leak #-Wunreachable-code -Ofast 
 MAKEFLAGS = --no-print-directory
 LFLAGS = -L libft -lft
 RM = rm -f
@@ -40,7 +40,7 @@ $(OBJ_DIR)%.o: $(SRC_DIR)%.c $(INCLUDES)
 #~~~~~~~ MLX42 ~~~~~~~~
 LIBMLX	= ./MLX42
 HEADERS	= -I ./include -I $(LIBMLX)/include
-MLXLIBS	:= $(LIBMLX)/build/libmlx42.a -ldl -lglfw -pthread -lm
+MLXLIBS	= $(LIBMLX)/build/libmlx42.a -ldl -lglfw -pthread -lm
 
 all: libmlx obj ${NAME}
 
