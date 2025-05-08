@@ -6,7 +6,7 @@
 /*   By: mignavar <mignavar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/24 12:47:49 by mignavar          #+#    #+#             */
-/*   Updated: 2025/04/25 11:27:13 by mignavar         ###   ########.fr       */
+/*   Updated: 2025/05/08 19:34:29 by mignavar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,10 @@ bool	save_images(t_game *game)
 	game->im_east = mlx_texture_to_image(game->mlx, game->tx_east);
 	game->im_west = mlx_texture_to_image(game->mlx, game->tx_west);
 	if (!game->im_north || !game->im_south || !game->im_east || !game->im_west)
-		return (free_images(game), FALSE);
+	{
+		free_images(game);
+		mlx_terminate(game->mlx);
+		return (FALSE);
+	}
 	return (TRUE);
 }

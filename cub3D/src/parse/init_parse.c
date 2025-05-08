@@ -6,7 +6,7 @@
 /*   By: mignavar <mignavar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/08 11:47:35 by mignavar          #+#    #+#             */
-/*   Updated: 2025/04/28 11:32:26 by mignavar         ###   ########.fr       */
+/*   Updated: 2025/05/08 19:43:17 by mignavar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,6 +57,7 @@ bool	extract_map(t_data *data)
 		m_line++;
 		line++;
 	}
+	data->map_lines = m_line;
 	return (TRUE);
 }
 

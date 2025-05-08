@@ -6,7 +6,7 @@
 /*   By: mignavar <mignavar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/22 11:39:00 by mignavar          #+#    #+#             */
-/*   Updated: 2025/04/30 16:48:18 by mignavar         ###   ########.fr       */
+/*   Updated: 2025/05/08 19:26:34 by mignavar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,6 +76,6 @@ bool	init_game(t_data *data)
 	mlx_key_hook(game.mlx, &my_keyhook, data);
 	mlx_loop(game.mlx);
 	mlx_terminate(game.mlx);
-	free_images(&game);
+	free_game_textures(data->game);
 	return (TRUE);
 }

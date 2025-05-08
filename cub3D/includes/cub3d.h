@@ -6,7 +6,7 @@
 /*   By: mignavar <mignavar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/07 16:00:05 by mignavar          #+#    #+#             */
-/*   Updated: 2025/04/28 11:24:41 by mignavar         ###   ########.fr       */
+/*   Updated: 2025/05/08 19:43:02 by mignavar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,6 +41,7 @@ struct s_data
 {
 	char	**doc;
 	char	**map;
+	int		map_lines;
 	char	*no_texture;
 	char	*so_texture;
 	char	*ea_texture;
