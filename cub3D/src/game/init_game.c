@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   init_game.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mignavar <mignavar@student.42.fr>          +#+  +:+       +#+        */
+/*   By: dlopez-l <dlopez-l@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/22 11:39:00 by mignavar          #+#    #+#             */
-/*   Updated: 2025/05/08 19:26:34 by mignavar         ###   ########.fr       */
+/*   Updated: 2025/05/17 21:07:28 by dlopez-l         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,7 +59,7 @@ bool	init_game(t_data *data)
 	data->game = &game;
 	ft_bzero(&game, sizeof(t_game));
 	mlx_set_setting(MLX_DECORATED, true);
-	game.mlx = mlx_init(256, 256, "42Balls", true);
+	game.mlx = mlx_init(WIDTH, HEIGHT, "42Balls", true);
 	if (!game.mlx)
 		ft_error();
 
@@ -74,6 +74,7 @@ bool	init_game(t_data *data)
 	// NOTE: Do this before calling mlx_loop!
 	//mlx_loop_hook(game.mlx, ft_hook, game.mlx);
 	mlx_key_hook(game.mlx, &my_keyhook, data);
+	mlx_loop_hook(game.mlx, render, data);
 	mlx_loop(game.mlx);
 	mlx_terminate(game.mlx);
 	free_game_textures(data->game);

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mignavar <mignavar@student.42.fr>          +#+  +:+       +#+        */
+/*   By: dlopez-l <dlopez-l@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/07 16:00:05 by mignavar          #+#    #+#             */
-/*   Updated: 2025/05/08 19:43:02 by mignavar         ###   ########.fr       */
+/*   Updated: 2025/05/17 21:09:33 by dlopez-l         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,10 +18,14 @@
 # include <stdlib.h>
 # include <unistd.h>
 # include <stdbool.h>
+# include <math.h>
 # include "../MLX42/include/MLX42/MLX42.h"
 
 # define TRUE 1
 # define FALSE 0
+
+# define WIDTH 640
+# define HEIGHT 480
 
 //COLORS
 # define RED	"\001\033[1;31m\002"
@@ -36,6 +40,7 @@
 typedef struct s_data	t_data;
 typedef struct s_game	t_game;
 typedef struct s_pj		t_pj;
+typedef struct s_ray	t_ray;
 
 struct s_data
 {
@@ -71,10 +76,35 @@ struct s_game
 
 struct s_pj
 {
-	int		line;
-	int		pos;
+	double	pos_x;
+	double	pos_y;
 	char	view;
 	int		angle;
+	double	dir_x;
+	double	dir_y;
+	double	plane_x;
+	double	plane_y;
+};
+
+struct s_ray
+{
+	double	camera_x;
+	double	dir_x;
+	double	dir_y;
+	int		map_x;
+	int		map_y;
+	int		step_x;
+	int		step_y;
+	double	sidedist_x;
+	double	sidedist_y;
+	double	deltadist_x;
+	double	deltadist_y;
+	double	wall_dist;
+	double	wall_x;
+	int		side;
+	int		line_height;
+	int		draw_start;
+	int		draw_end;
 };
 
 
@@ -83,6 +113,12 @@ void	free_all(t_data *data);
 
 //----------- GAME ------------------
 bool	init_game(t_data *data);
+
+//----------- RENDER ----------------
+void	render(void *data);
+void	init_ray(t_ray *ray);
+void	raycast(t_pj *player, t_data *data);
+void	update_pixels(t_data *data, t_ray *ray, int x);
 
 //textures
 bool	save_textures(t_game *game, t_data *data);

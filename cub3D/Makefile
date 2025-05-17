@@ -8,6 +8,7 @@ SRC_DIR = ./src/
 ERROR_DIR = error/
 GAME_DIR = game/
 PARS_DIR = parse/
+REND_DIR = render/
 #~~~~~~ Src Files ~~~~~~~
 SRCS = main.c\
 	$(ERROR_DIR)error.c\
@@ -20,7 +21,9 @@ SRCS = main.c\
 	$(PARS_DIR)extract_textures.c\
 	$(PARS_DIR)find_rgb.c\
 	$(PARS_DIR)init_parse.c\
-	$(PARS_DIR)parse_map.c
+	$(PARS_DIR)parse_map.c\
+	$(REND_DIR)render.c\
+	$(REND_DIR)raycast.c
 #~~~~~~ Obj Files ~~~~~~~
 OBJ_FILES = $(SRCS:.c=.o)
 OBJS = $(addprefix $(OBJ_DIR), $(OBJ_FILES))

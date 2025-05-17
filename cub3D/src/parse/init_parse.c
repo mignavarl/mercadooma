@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   init_parse.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mignavar <mignavar@student.42.fr>          +#+  +:+       +#+        */
+/*   By: dlopez-l <dlopez-l@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/08 11:47:35 by mignavar          #+#    #+#             */
-/*   Updated: 2025/05/08 19:43:17 by mignavar         ###   ########.fr       */
+/*   Updated: 2025/05/17 20:32:39 by dlopez-l         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -92,8 +92,8 @@ void	player_pos(t_data *data, char **map)
 			if (map[line][pos] == 'N' || map[line][pos] == 'S'
 				|| map[line][pos] == 'E' || map[line][pos] == 'W')
 				{
-					data->pj->line = line;
-					data->pj->pos = pos;
+					data->pj->pos_x = line;
+					data->pj->pos_y = pos;
 					data->pj->view = map[line][pos];
 					return ;
 				}
