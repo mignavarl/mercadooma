@@ -6,7 +6,7 @@
 /*   By: dlopez-l <dlopez-l@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/22 11:39:00 by mignavar          #+#    #+#             */
-/*   Updated: 2025/05/17 21:07:28 by dlopez-l         ###   ########.fr       */
+/*   Updated: 2025/05/18 12:50:19 by dlopez-l         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,10 +59,11 @@ bool	init_game(t_data *data)
 	data->game = &game;
 	ft_bzero(&game, sizeof(t_game));
 	mlx_set_setting(MLX_DECORATED, true);
-	game.mlx = mlx_init(WIDTH, HEIGHT, "42Balls", true);
+	printf("Hola\n"); //debug
+	game.mlx = mlx_init(640, 480, "42Balls", true); //TODO en mi portatil no se ejecuta esta linea
+	printf("adio\n"); //debug
 	if (!game.mlx)
 		ft_error();
-
 	/* Do stuff */
 	if (!save_textures(&game, data))
 		return (free_all(data), FALSE);

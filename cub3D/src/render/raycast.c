@@ -6,7 +6,7 @@
 /*   By: dlopez-l <dlopez-l@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/17 20:03:00 by dlopez-l          #+#    #+#             */
-/*   Updated: 2025/05/17 21:12:59 by dlopez-l         ###   ########.fr       */
+/*   Updated: 2025/05/18 12:40:03 by dlopez-l         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -95,7 +95,7 @@ void	loop_dda(t_ray *ray, t_data *data)
 
 void	calc_line_height(t_ray *ray, t_data *data, t_pj *player)
 {
-	(void)data; //BORRAR SI DEJO HEIGHT Y WIDTH FUERA
+	(void)data; //TODO BORRAR SI DEJO HEIGHT Y WIDTH FUERA
 	if (ray->side == 0)
 		ray->wall_dist = ray->sidedist_x - ray->deltadist_x;
 	else
@@ -130,5 +130,4 @@ void	raycast(t_pj *player, t_data *data)
 		update_pixels(data, &ray, x);
 		x++;
 	}
-	
 }
