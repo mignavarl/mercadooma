@@ -6,7 +6,7 @@
 /*   By: dlopez-l <dlopez-l@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/22 11:39:00 by mignavar          #+#    #+#             */
-/*   Updated: 2025/05/18 12:50:19 by dlopez-l         ###   ########.fr       */
+/*   Updated: 2025/05/20 11:00:40 by dlopez-l         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,8 +75,8 @@ bool	init_game(t_data *data)
 	// NOTE: Do this before calling mlx_loop!
 	//mlx_loop_hook(game.mlx, ft_hook, game.mlx);
 	mlx_key_hook(game.mlx, &my_keyhook, data);
-	mlx_loop_hook(game.mlx, render, data);
 	mlx_loop(game.mlx);
+	mlx_loop_hook(game.mlx, render, &data);
 	mlx_terminate(game.mlx);
 	free_game_textures(data->game);
 	return (TRUE);
