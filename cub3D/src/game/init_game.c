@@ -6,7 +6,7 @@
 /*   By: dlopez-l <dlopez-l@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/22 11:39:00 by mignavar          #+#    #+#             */
-/*   Updated: 2025/05/27 19:26:12 by dlopez-l         ###   ########.fr       */
+/*   Updated: 2025/05/27 19:59:45 by dlopez-l         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,45 +28,20 @@ static void ft_error(void)
 void	my_keyhook(mlx_key_data_t keydata, void* param)
 {
 	t_data	*data;
-	double	new_x;
-	double	new_y;
 
 	data = (t_data *)param;
-	// If we PRESS the 'J' key, print "Hello".
-	if (keydata.key == MLX_KEY_W && keydata.action == MLX_PRESS)
+	if (keydata.action == MLX_PRESS && (keydata.key == MLX_KEY_W || \
+		keydata.key == MLX_KEY_S || \
+		keydata.key == MLX_KEY_A || \
+		keydata.key == MLX_KEY_D))
 	{
+		player_move(data, keydata.key);
+	}
+	if (keydata.key == MLX_KEY_RIGHT)
+		rotate_player(data, -1);
+	if (keydata.key == MLX_KEY_LEFT)
+		rotate_player(data, 1);
 
-
-		new_x = data->pj->pos_x + data->pj->dir_x * MOVESPEED;
-		new_y = data->pj->pos_y + data->pj->dir_y * MOVESPEED;
-		data->pj->pos_x = new_x;
-		data->pj->pos_y = new_y;
-		data->moved = 1;
-	}
-	if (keydata.key == MLX_KEY_S && keydata.action == MLX_PRESS)
-	{
-		new_x = data->pj->pos_x - data->pj->dir_x * MOVESPEED;
-		new_y = data->pj->pos_y - data->pj->dir_y * MOVESPEED;
-		data->pj->pos_x = new_x;
-		data->pj->pos_y = new_y;
-		data->moved = 1;
-	}
-	if (keydata.key == MLX_KEY_A && keydata.action == MLX_PRESS)
-	{
-		new_x = data->pj->pos_x - data->pj->dir_y * MOVESPEED;
-		new_y = data->pj->pos_y + data->pj->dir_x * MOVESPEED;
-		data->pj->pos_x = new_x;
-		data->pj->pos_y = new_y;
-		data->moved = 1;
-	}
-	if (keydata.key == MLX_KEY_D && keydata.action == MLX_PRESS)
-	{
-		new_x = data->pj->pos_x + data->pj->dir_y * MOVESPEED;
-		new_y = data->pj->pos_y - data->pj->dir_x * MOVESPEED;
-		data->pj->pos_x = new_x;
-		data->pj->pos_y = new_y;
-		data->moved = 1;
-	}
 	if (keydata.key == MLX_KEY_J && keydata.action == MLX_PRESS)
 		puts("Hello ");
 
@@ -94,7 +69,7 @@ bool	init_game(t_data *data)
 	if (!data->game)
 		return false;
 	mlx_set_setting(MLX_DECORATED, true);
-	data->game->mlx = mlx_init(640, 480, "42Balls", false); //TODO en mi portatil no se ejecuta esta linea
+	data->game->mlx = mlx_init(WIDTH, HEIGHT, "42Balls", false); //TODO en mi portatil no se ejecuta esta linea
 	if (!data->game->mlx)
 		ft_error();
 	ft_printf("WINDOW => %p\t WIDTH => %i\t HEIGHT => %i\n", data->game->mlx->window, data->game->mlx->width, data->game->mlx->height);

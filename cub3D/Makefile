@@ -16,6 +16,8 @@ SRCS = main.c\
 	$(GAME_DIR)images.c\
 	$(GAME_DIR)textures.c\
 	$(GAME_DIR)player_dir.c\
+	$(GAME_DIR)player_rotate.c\
+	$(GAME_DIR)player_move.c\
 	$(PARS_DIR)check_holes.c\
 	$(PARS_DIR)extract_colors.c\
 	$(PARS_DIR)extract_rgba.c\

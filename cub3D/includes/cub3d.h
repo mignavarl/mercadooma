@@ -6,7 +6,7 @@
 /*   By: dlopez-l <dlopez-l@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/07 16:00:05 by mignavar          #+#    #+#             */
-/*   Updated: 2025/05/27 18:16:22 by dlopez-l         ###   ########.fr       */
+/*   Updated: 2025/05/27 19:56:17 by dlopez-l         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,9 +25,10 @@
 # define TRUE 1
 # define FALSE 0
 
-# define WIDTH 640
-# define HEIGHT 480
+# define WIDTH 1080
+# define HEIGHT 720
 # define MOVESPEED 0.0125
+# define ROTSPEED 0.015
 
 //COLORS
 # define RED	"\001\033[1;31m\002"
@@ -118,6 +119,8 @@ void	free_all(t_data *data);
 //----------- GAME ------------------
 bool	init_game(t_data *data);
 void	init_player_dir(t_data *data);
+void	player_move(t_data *data, keys_t key);
+void	rotate_player(t_data *data, double rotdir);
 
 //----------- RENDER ----------------
 void	render(void *data);

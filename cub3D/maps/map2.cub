@@ -1,9 +1,9 @@
 SO ./textures/Pink.png
 F 67,33,163
 C 225,30,30
-EA ./textures/Pink.png
+EA ./textures/foton.png
 NO ./textures/Pink.png
-WE ./textures/Pink.png
+WE ./textures/foton.png
 
 
 111111111111111111111
