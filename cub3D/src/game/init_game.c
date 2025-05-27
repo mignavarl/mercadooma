@@ -6,7 +6,7 @@
 /*   By: dlopez-l <dlopez-l@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/22 11:39:00 by mignavar          #+#    #+#             */
-/*   Updated: 2025/05/27 18:16:03 by dlopez-l         ###   ########.fr       */
+/*   Updated: 2025/05/27 19:26:12 by dlopez-l         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,16 +53,16 @@ void	my_keyhook(mlx_key_data_t keydata, void* param)
 	}
 	if (keydata.key == MLX_KEY_A && keydata.action == MLX_PRESS)
 	{
-		new_x = data->pj->pos_x + data->pj->dir_y * MOVESPEED;
-		new_y = data->pj->pos_y - data->pj->dir_x * MOVESPEED;
+		new_x = data->pj->pos_x - data->pj->dir_y * MOVESPEED;
+		new_y = data->pj->pos_y + data->pj->dir_x * MOVESPEED;
 		data->pj->pos_x = new_x;
 		data->pj->pos_y = new_y;
 		data->moved = 1;
 	}
 	if (keydata.key == MLX_KEY_D && keydata.action == MLX_PRESS)
 	{
-		new_x = data->pj->pos_x - data->pj->dir_y * MOVESPEED;
-		new_y = data->pj->pos_y + data->pj->dir_x * MOVESPEED;
+		new_x = data->pj->pos_x + data->pj->dir_y * MOVESPEED;
+		new_y = data->pj->pos_y - data->pj->dir_x * MOVESPEED;
 		data->pj->pos_x = new_x;
 		data->pj->pos_y = new_y;
 		data->moved = 1;
