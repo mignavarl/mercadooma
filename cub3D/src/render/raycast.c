@@ -6,45 +6,46 @@
 /*   By: dlopez-l <dlopez-l@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/17 20:03:00 by dlopez-l          #+#    #+#             */
-/*   Updated: 2025/05/27 15:12:48 by dlopez-l         ###   ########.fr       */
+/*   Updated: 2025/05/27 17:36:12 by dlopez-l         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
-void	init_ray(t_ray *ray)
+t_ray	*init_ray(void)
 {
-	ray->camera_x = 0;
-	ray->deltadist_x = 0;
-	ray->deltadist_y = 0;
-	ray->dir_x = 0;
-	ray->dir_y = 0;
-	ray->draw_end = 0;
-	ray->draw_start = 0;
-	ray->line_height = 0;
-	ray->map_x = 0;
-	ray->map_y = 0;
-	ray->side = 0;
-	ray->sidedist_x = 0;
-	ray->sidedist_y = 0;
-	ray->step_x = 0;
-	ray->step_y = 0;
-	ray->wall_dist = 0;
-	ray->wall_x = 0;
+	t_ray *r;
+	
+	r = ft_calloc(1, sizeof(t_ray));
+
+	return (r);
+	// ray->camera_x = 0;
+	// ray->deltadist_x = 0;
+	// ray->deltadist_y = 0;
+	// ray->dir_x = 0;
+	// ray->dir_y = 0;
+	// ray->draw_end = 0;
+	// ray->draw_start = 0;
+	// ray->line_height = 0;
+	// ray->map_x = 0;
+	// ray->map_y = 0;
+	// ray->side = 0;
+	// ray->sidedist_x = 0;
+	// ray->sidedist_y = 0;
+	// ray->step_x = 0;
+	// ray->step_y = 0;
+	// ray->wall_dist = 0;
+	// ray->wall_x = 0;
 }
 
 void	init_raycast(int x, t_ray *ray, t_pj *player)
 {
-	init_ray(ray);
-	player->plane_x = 0;
-	player->plane_y = 0.66;
-	player->dir_x = 1;
-	player->dir_y = -1;
-	ray->camera_x = 2 * x / (double) (WIDTH) - 1;
-	ray->dir_x = player->dir_x + player->plane_x * ray->camera_x;
-	ray->dir_y = player->dir_y + player->plane_y * ray->camera_x;
+	// init_ray(ray);
+	ray->camera_x = 2 * x / (double)(WIDTH) - 1;
 	ray->map_x = (int)player->pos_x;
 	ray->map_y = (int)player->pos_y;
+	ray->dir_x = player->dir_x + player->plane_x * ray->camera_x;
+	ray->dir_y = player->dir_y + player->plane_y * ray->camera_x;
 	ray->deltadist_x = fabs(1 / ray->dir_x);
 	ray->deltadist_y = fabs(1 / ray->dir_y);
 	// printf("dir_y = %f -- plane_y = %f -- camera_x = %f\n", player->dir_y, player->plane_y, ray->camera_x);
@@ -79,7 +80,7 @@ void	loop_dda(t_ray *ray, t_data *data)
 	int	hit;
 
 	hit = 0;
-	while (!hit)
+	while (hit == 0)
 	{
 		if (ray->sidedist_x < ray->sidedist_y)
 		{
@@ -93,7 +94,6 @@ void	loop_dda(t_ray *ray, t_data *data)
 			ray->map_y += ray->step_y;
 			ray->side = 1;
 		}
-		printf("x = %d -- y = %d\n", ray->map_x, ray->map_y);
 		if (data->map[ray->map_x][ray->map_y] > '0')
 			hit = 1;
 	}
@@ -122,18 +122,19 @@ void	calc_line_height(t_ray *ray, t_data *data, t_pj *player)
 
 void	raycast(t_pj *player, t_data *data)
 {
-	t_ray	ray;
+	t_ray	*ray;
 	int		x;
 
 	x = 0;
-	// ray = data.ray;
+	ray = ft_calloc(1, sizeof(t_ray));
 	while (x < WIDTH)
 	{
-		init_raycast(x, &ray, player);
-		calc_dda(&ray, player);
-		loop_dda(&ray, data);
-		calc_line_height(&ray, data, player);
-		update_pixels(data, &ray, x);
+		init_raycast(x, ray, player);
+		calc_dda(ray, player);
+		loop_dda(ray, data);
+		calc_line_height(ray, data, player);
+		update_pixels(data, ray, x);
 		x++;
 	}
+	free(ray);
 }

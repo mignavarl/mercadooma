@@ -15,6 +15,7 @@ SRCS = main.c\
 	$(GAME_DIR)init_game.c\
 	$(GAME_DIR)images.c\
 	$(GAME_DIR)textures.c\
+	$(GAME_DIR)player_dir.c\
 	$(PARS_DIR)check_holes.c\
 	$(PARS_DIR)extract_colors.c\
 	$(PARS_DIR)extract_rgba.c\
@@ -32,7 +33,7 @@ INCLUDES =	$(INC_DIR)cub3d.h
 
 #~~~~~~ Compiling ~~~~~~~
 CC = cc
-CFLAGS = -Wall -Wextra -Werror -g3 -O0 -fsanitize=leak #-Wunreachable-code -Ofast 
+CFLAGS = -Wall -Wextra -Werror -g3 -fsanitize=leak #-Wunreachable-code -Ofast 
 MAKEFLAGS = --no-print-directory
 LFLAGS = -L libft -lft
 RM = rm -f

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mignavar <mignavar@student.42.fr>          +#+  +:+       +#+        */
+/*   By: dlopez-l <dlopez-l@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/07 15:59:40 by mignavar          #+#    #+#             */
-/*   Updated: 2025/05/08 19:01:29 by mignavar         ###   ########.fr       */
+/*   Updated: 2025/05/27 15:51:59 by dlopez-l         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,20 +51,21 @@ void	free_all(t_data *data)
 
 int	main(int argc, char **argv)
 {
-	t_data	data;
+	t_data	*data;
 
 	if (argc != 2)
 		return (print_error("Incorrect number of arguments"), 1);
 	if (ft_strncmp(&argv[1][(ft_strlen(argv[1]) - 4)], ".cub", 4) != 0)
 		return (print_error("Extension not valid"), 1);
-	ft_bzero(&data, sizeof(t_data));
-	data.total_line = count_line(argv[1]);
-	if (data.total_line < 10)
+	data = ft_calloc(1, sizeof(t_data));
+	// ft_bzero(&data, sizeof(t_data));
+	data->total_line = count_line(argv[1]);
+	if (data->total_line < 10)
 		return (print_error("Invalid document"), 1);
-	if (!init_parse(&data, argv[1]))
+	if (!init_parse(data, argv[1]))
 		return (1);
-	if (!init_game(&data))
+	if (!init_game(data))
 		return (1);
-	free_all(&data);
+	free_all(data);
 	return (0);
 }
