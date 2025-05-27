@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   render.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mignavar <mignavar@student.42.fr>          +#+  +:+       +#+        */
+/*   By: dlopez-l <dlopez-l@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/17 20:09:45 by dlopez-l          #+#    #+#             */
-/*   Updated: 2025/05/27 13:05:28 by mignavar         ###   ########.fr       */
+/*   Updated: 2025/05/27 15:01:30 by dlopez-l         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,13 +27,14 @@ void	update_pixels(t_data *data, t_ray *ray, int x)
 		mlx_put_pixel(data->game->img, x, y, 0xFF0000FF);
 		y++;
 	}
-	//mlx_image_to_window(data->game->mlx, data->game->img, 0, 0);
+	mlx_image_to_window(data->game->mlx, data->game->img, 0, 0);
 }
 
 void	render_raycast(t_data *data)
 {
 	//init_ray(data.ray);
 	raycast(data->pj, data);
+
 }
 
 void	render(void *content)
@@ -43,4 +44,7 @@ void	render(void *content)
 	data = (t_data *)content;
 	//IF !PLAYER MOVED RETURN(0)
 	render_raycast(data);
+	printf("TERMINE DE PINTAR Y TODO \n");
+	printf("PUNTERO A MLX => %p\n", data->game->mlx);
+	return ;
 }

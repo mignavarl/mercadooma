@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   raycast.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mignavar <mignavar@student.42.fr>          +#+  +:+       +#+        */
+/*   By: dlopez-l <dlopez-l@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/17 20:03:00 by dlopez-l          #+#    #+#             */
-/*   Updated: 2025/05/27 13:09:23 by mignavar         ###   ########.fr       */
+/*   Updated: 2025/05/27 15:12:48 by dlopez-l         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,8 +38,8 @@ void	init_raycast(int x, t_ray *ray, t_pj *player)
 	init_ray(ray);
 	player->plane_x = 0;
 	player->plane_y = 0.66;
-	player->dir_x = 0;
-	player->dir_y = 1;
+	player->dir_x = 1;
+	player->dir_y = -1;
 	ray->camera_x = 2 * x / (double) (WIDTH) - 1;
 	ray->dir_x = player->dir_x + player->plane_x * ray->camera_x;
 	ray->dir_y = player->dir_y + player->plane_y * ray->camera_x;
@@ -47,7 +47,7 @@ void	init_raycast(int x, t_ray *ray, t_pj *player)
 	ray->map_y = (int)player->pos_y;
 	ray->deltadist_x = fabs(1 / ray->dir_x);
 	ray->deltadist_y = fabs(1 / ray->dir_y);
-	printf("dir_y = %f -- plane_y = %f -- camera_x = %f\n", player->dir_y, player->plane_y, ray->camera_x);
+	// printf("dir_y = %f -- plane_y = %f -- camera_x = %f\n", player->dir_y, player->plane_y, ray->camera_x);
 }
 
 void	calc_dda(t_ray *ray, t_pj *player)
@@ -129,9 +129,7 @@ void	raycast(t_pj *player, t_data *data)
 	// ray = data.ray;
 	while (x < WIDTH)
 	{
-		// printf("PRUEBA1 = %p\n", data->game->img);
 		init_raycast(x, &ray, player);
-		printf("PRUEBA2 = %p\n", data->game->img);
 		calc_dda(&ray, player);
 		loop_dda(&ray, data);
 		calc_line_height(&ray, data, player);

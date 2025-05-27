@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   init_game.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mignavar <mignavar@student.42.fr>          +#+  +:+       +#+        */
+/*   By: dlopez-l <dlopez-l@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/22 11:39:00 by mignavar          #+#    #+#             */
-/*   Updated: 2025/05/27 13:04:55 by mignavar         ###   ########.fr       */
+/*   Updated: 2025/05/27 15:17:33 by dlopez-l         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,33 +53,30 @@ void my_keyhook(mlx_key_data_t keydata, void* param)
 
 bool	init_game(t_data *data)
 {
-	t_game	game;
-
 	// MLX allows you to define its core behaviour before startup.
-	data->game = &game;
-	ft_bzero(&game, sizeof(t_game));
+	data->game = ft_calloc(1, sizeof(t_game));
+	if (!data->game)
+		return false;
 	mlx_set_setting(MLX_DECORATED, true);
-	printf("Hola\n"); //debug
-	game.mlx = mlx_init(640, 480, "42Balls", true); //TODO en mi portatil no se ejecuta esta linea
-	printf("adio\n"); //debug
-	if (!game.mlx)
+	data->game->mlx = mlx_init(640, 480, "42Balls", false); //TODO en mi portatil no se ejecuta esta linea
+	if (!data->game->mlx)
 		ft_error();
 	/* Do stuff */
-	if (!save_textures(&game, data))
+	if (!save_textures(data->game, data))
 		return (free_all(data), FALSE);
-	mlx_set_icon(game.mlx, game.icon);
-	if (!save_images(&game))
+	mlx_set_icon(data->game->mlx, data->game->icon);
+	if (!save_images(data->game))
 		return (free_all(data), FALSE);
 	mlx_image_to_window(data->game->mlx, data->game->img, 0, 0);
 
 	//--------------
 	// Register a hook and pass mlx as an optional param.
 	// NOTE: Do this before calling mlx_loop!
-	//mlx_loop_hook(game.mlx, ft_hook, game.mlx);
-	mlx_loop_hook(game.mlx, render, data);
-	mlx_key_hook(game.mlx, &my_keyhook, data);
-	mlx_loop(game.mlx);
-	mlx_terminate(game.mlx);
+	//mlx_loop_hook(data->game->mlx, ft_hook, data->game->mlx);
+	mlx_loop_hook(data->game->mlx, render, data);
+	mlx_key_hook(data->game->mlx, &my_keyhook, data);
+	mlx_loop(data->game->mlx);
+	mlx_terminate(data->game->mlx);
 	free_game_textures(data->game);
 	return (TRUE);
 }
