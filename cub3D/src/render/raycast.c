@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   raycast.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dlopez-l <dlopez-l@student.42madrid.com    +#+  +:+       +#+        */
+/*   By: mignavar <mignavar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/17 20:03:00 by dlopez-l          #+#    #+#             */
-/*   Updated: 2025/05/18 12:40:03 by dlopez-l         ###   ########.fr       */
+/*   Updated: 2025/05/27 13:09:23 by mignavar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,13 +36,18 @@ void	init_ray(t_ray *ray)
 void	init_raycast(int x, t_ray *ray, t_pj *player)
 {
 	init_ray(ray);
-	ray->camera_x = 2 * x / (double) WIDTH - 1;
+	player->plane_x = 0;
+	player->plane_y = 0.66;
+	player->dir_x = 0;
+	player->dir_y = 1;
+	ray->camera_x = 2 * x / (double) (WIDTH) - 1;
 	ray->dir_x = player->dir_x + player->plane_x * ray->camera_x;
 	ray->dir_y = player->dir_y + player->plane_y * ray->camera_x;
 	ray->map_x = (int)player->pos_x;
 	ray->map_y = (int)player->pos_y;
 	ray->deltadist_x = fabs(1 / ray->dir_x);
 	ray->deltadist_y = fabs(1 / ray->dir_y);
+	printf("dir_y = %f -- plane_y = %f -- camera_x = %f\n", player->dir_y, player->plane_y, ray->camera_x);
 }
 
 void	calc_dda(t_ray *ray, t_pj *player)
@@ -88,6 +93,7 @@ void	loop_dda(t_ray *ray, t_data *data)
 			ray->map_y += ray->step_y;
 			ray->side = 1;
 		}
+		printf("x = %d -- y = %d\n", ray->map_x, ray->map_y);
 		if (data->map[ray->map_x][ray->map_y] > '0')
 			hit = 1;
 	}
@@ -95,7 +101,7 @@ void	loop_dda(t_ray *ray, t_data *data)
 
 void	calc_line_height(t_ray *ray, t_data *data, t_pj *player)
 {
-	(void)data; //TODO BORRAR SI DEJO HEIGHT Y WIDTH FUERA
+	(void)data;
 	if (ray->side == 0)
 		ray->wall_dist = ray->sidedist_x - ray->deltadist_x;
 	else
@@ -121,9 +127,11 @@ void	raycast(t_pj *player, t_data *data)
 
 	x = 0;
 	// ray = data.ray;
-	while (x < 256)
+	while (x < WIDTH)
 	{
+		// printf("PRUEBA1 = %p\n", data->game->img);
 		init_raycast(x, &ray, player);
+		printf("PRUEBA2 = %p\n", data->game->img);
 		calc_dda(&ray, player);
 		loop_dda(&ray, data);
 		calc_line_height(&ray, data, player);

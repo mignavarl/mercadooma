@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   init_parse.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dlopez-l <dlopez-l@student.42madrid.com    +#+  +:+       +#+        */
+/*   By: mignavar <mignavar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/08 11:47:35 by mignavar          #+#    #+#             */
-/*   Updated: 2025/05/17 20:32:39 by dlopez-l         ###   ########.fr       */
+/*   Updated: 2025/05/27 12:05:55 by mignavar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -94,6 +94,8 @@ void	player_pos(t_data *data, char **map)
 				{
 					data->pj->pos_x = line;
 					data->pj->pos_y = pos;
+					data->pj->dir_x = 0;
+					data->pj->dir_y = 1;
 					data->pj->view = map[line][pos];
 					return ;
 				}

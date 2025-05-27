@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dlopez-l <dlopez-l@student.42madrid.com    +#+  +:+       +#+        */
+/*   By: mignavar <mignavar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/07 16:00:05 by mignavar          #+#    #+#             */
-/*   Updated: 2025/05/17 21:09:33 by dlopez-l         ###   ########.fr       */
+/*   Updated: 2025/05/27 12:43:48 by mignavar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,7 @@
 # include <unistd.h>
 # include <stdbool.h>
 # include <math.h>
+# include <string.h>
 # include "../MLX42/include/MLX42/MLX42.h"
 
 # define TRUE 1
@@ -63,6 +64,7 @@ struct s_data
 struct s_game
 {
 	mlx_t			*mlx;
+	mlx_image_t		*img;
 	mlx_texture_t	*tx_north;
 	mlx_texture_t	*tx_south;
 	mlx_texture_t	*tx_east;
@@ -148,4 +150,6 @@ void	free_map(t_data *data);
 void	free_texture(t_data *data, int tx);
 void	print_error(char *text);
 
+
+void	print_map(t_data *data);//TODO: boorar
 #endif

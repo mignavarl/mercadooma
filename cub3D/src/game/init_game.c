@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   init_game.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dlopez-l <dlopez-l@student.42madrid.com    +#+  +:+       +#+        */
+/*   By: mignavar <mignavar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/22 11:39:00 by mignavar          #+#    #+#             */
-/*   Updated: 2025/05/20 11:00:40 by dlopez-l         ###   ########.fr       */
+/*   Updated: 2025/05/27 13:04:55 by mignavar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,13 +70,15 @@ bool	init_game(t_data *data)
 	mlx_set_icon(game.mlx, game.icon);
 	if (!save_images(&game))
 		return (free_all(data), FALSE);
+	mlx_image_to_window(data->game->mlx, data->game->img, 0, 0);
+
 	//--------------
 	// Register a hook and pass mlx as an optional param.
 	// NOTE: Do this before calling mlx_loop!
 	//mlx_loop_hook(game.mlx, ft_hook, game.mlx);
+	mlx_loop_hook(game.mlx, render, data);
 	mlx_key_hook(game.mlx, &my_keyhook, data);
 	mlx_loop(game.mlx);
-	mlx_loop_hook(game.mlx, render, &data);
 	mlx_terminate(game.mlx);
 	free_game_textures(data->game);
 	return (TRUE);

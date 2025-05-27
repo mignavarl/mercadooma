@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   render.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dlopez-l <dlopez-l@student.42madrid.com    +#+  +:+       +#+        */
+/*   By: mignavar <mignavar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/17 20:09:45 by dlopez-l          #+#    #+#             */
-/*   Updated: 2025/05/20 11:02:51 by dlopez-l         ###   ########.fr       */
+/*   Updated: 2025/05/27 13:05:28 by mignavar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,20 +14,20 @@
 
 void	update_pixels(t_data *data, t_ray *ray, int x)
 {
-	mlx_image_t	*img;
 	int			y;
 
-	img = mlx_new_image(data->game->mlx, WIDTH, HEIGHT);
 	y = ray->draw_start;
-	(void)x;
-	mlx_put_pixel(img, 300, 200, 0xFFFF0000);
+	//mlx_put_pixel(img, 300, 200, 0xFFFF0000);
+	printf("y = %d\nend = %d\n", y, ray->draw_end);
 	while (y < ray->draw_end)
 	{
-		//mlx_put_pixel(img, x, y, 0x00FF0000);
+		printf("x = %d\ny = %d\n", x, y);
+		printf("DATA = %p\n", data->game->img);
+		// mlx_put_pixel(data->game->img, x, y, data->ceiling);
+		mlx_put_pixel(data->game->img, x, y, 0xFF0000FF);
 		y++;
 	}
-	mlx_image_to_window(data->game->mlx, img, 0, 0);
-	free(img);
+	//mlx_image_to_window(data->game->mlx, data->game->img, 0, 0);
 }
 
 void	render_raycast(t_data *data)
