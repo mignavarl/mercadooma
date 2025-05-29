@@ -6,7 +6,7 @@
 /*   By: dlopez-l <dlopez-l@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/07 16:00:05 by mignavar          #+#    #+#             */
-/*   Updated: 2025/05/27 19:56:17 by dlopez-l         ###   ########.fr       */
+/*   Updated: 2025/05/28 11:29:37 by dlopez-l         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -144,6 +144,8 @@ bool	extract_texture(char **doc, t_data *data);
 void	free_texture(t_data *data, int tx);
 bool	init_parse(t_data *data, char *arg);
 bool	parse_map(t_data *data);
+void	my_keyhook(mlx_key_data_t keydata, void* param);
+
 
 //find_rgb
 bool	check_str_color(char *color);
@@ -155,7 +157,6 @@ char	*find_red(char *red, char *color);
 void	free_map(t_data *data);
 void	free_texture(t_data *data, int tx);
 void	print_error(char *text);
-
 
 void	print_map(t_data *data);//TODO: boorar
 #endif

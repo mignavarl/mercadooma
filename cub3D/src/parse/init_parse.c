@@ -6,7 +6,7 @@
 /*   By: dlopez-l <dlopez-l@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/08 11:47:35 by mignavar          #+#    #+#             */
-/*   Updated: 2025/05/27 18:09:41 by dlopez-l         ###   ########.fr       */
+/*   Updated: 2025/05/28 11:50:48 by dlopez-l         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -91,9 +91,10 @@ void	player_pos(t_data *data, char **map)
 			if (map[line][pos] == 'N' || map[line][pos] == 'S'
 				|| map[line][pos] == 'E' || map[line][pos] == 'W')
 				{
-					printf("AAAAAAAA line = %d pos = %d\n", line, pos);
 					data->pj->pos_x = line;
 					data->pj->pos_y = pos;
+					printf("AAAAAAAA line = %d pos = %d\n", line, pos);
+					printf("AAAAAAAA puntero = %p\n", &data->pj->pos_x);
 					data->pj->view = map[line][pos];
 					init_player_dir(data);
 					return ;
@@ -114,7 +115,8 @@ bool	init_parse(t_data *data, char *arg)
 	if (!parse_map(data))
 		return (FALSE);
 	player_pos(data, data->map);
-	ft_printf("POSICION EN INIT PARSE x = %i y = %i\n", data->pj->pos_x, data->pj->pos_y);
+	printf("AAAAAAAA puntero EN INIT PARSE = %p\n", &data->pj->pos_x);
+	ft_printf("POSICION EN INIT PARSE x = %f y = %f\n", data->pj->pos_x, data->pj->pos_y);
 	if (!extract_texture(data->doc, data))
 		return (print_error("Texture not found"), FALSE);
 	if (!extract_color(data->doc, data))

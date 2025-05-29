@@ -35,7 +35,7 @@ INCLUDES =	$(INC_DIR)cub3d.h
 
 #~~~~~~ Compiling ~~~~~~~
 CC = cc
-CFLAGS = -Wall -Wextra -Werror -g3 -fsanitize=leak #-Wunreachable-code -Ofast 
+CFLAGS = -Wall -Wextra -Werror -g3 #-fsanitize=leak #-Wunreachable-code -Ofast 
 MAKEFLAGS = --no-print-directory
 LFLAGS = -L libft -lft
 RM = rm -f
