@@ -6,7 +6,7 @@
 /*   By: dlopez-l <dlopez-l@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/07 16:00:05 by mignavar          #+#    #+#             */
-/*   Updated: 2025/05/29 15:23:24 by dlopez-l         ###   ########.fr       */
+/*   Updated: 2025/05/29 15:46:32 by dlopez-l         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -126,6 +126,7 @@ void	key_pressed(t_data *data, keys_t key);
 void	key_released(t_data *data, keys_t key);
 void	rotate_player(t_data *data, double rotdir);
 void	move_player(t_data *data);
+
 
 //----------- RENDER ----------------
 void	render(void *data);
