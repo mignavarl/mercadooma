@@ -1,9 +1,9 @@
-SO ./textures/Pink.png
-F 166,27,131
-C 225,30,30
-EA ./textures/foton.png
-NO ./textures/Pink.png
-WE ./textures/foton.png
+SO ./textures/puerta_pixel.png
+F 67,33,163
+C 225,30,0
+EA ./textures/drogueria_pixel.png
+NO ./textures/fruteria_pixel.png
+WE ./textures/pan_pixel.png
 
 
 1111111111111111111111111111111111111111111111111

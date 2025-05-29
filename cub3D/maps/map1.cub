@@ -1,9 +1,9 @@
-SO ./textures/Pink.png
+SO ./textures/puerta_pixel.png
 F 67,33,163
 C 225,30,0
-EA ./textures/Pink.png
-NO ./textures/Pink.png
-WE ./textures/Pink.png
+EA ./textures/drogueria_pixel.png
+NO ./textures/fruteria_pixel.png
+WE ./textures/pan_pixel.png
 
        111111 1111111111111111111
         1000010000110000000000001
