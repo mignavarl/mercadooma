@@ -6,7 +6,7 @@
 /*   By: dlopez-l <dlopez-l@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/07 16:00:05 by mignavar          #+#    #+#             */
-/*   Updated: 2025/05/28 11:29:37 by dlopez-l         ###   ########.fr       */
+/*   Updated: 2025/05/29 15:23:24 by dlopez-l         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -89,6 +89,9 @@ struct s_pj
 	double	dir_y;
 	double	plane_x;
 	double	plane_y;
+	int		move_x;
+	int		move_y;
+	int		rotate;
 };
 
 struct s_ray
@@ -119,8 +122,10 @@ void	free_all(t_data *data);
 //----------- GAME ------------------
 bool	init_game(t_data *data);
 void	init_player_dir(t_data *data);
-void	player_move(t_data *data, keys_t key);
+void	key_pressed(t_data *data, keys_t key);
+void	key_released(t_data *data, keys_t key);
 void	rotate_player(t_data *data, double rotdir);
+void	move_player(t_data *data);
 
 //----------- RENDER ----------------
 void	render(void *data);

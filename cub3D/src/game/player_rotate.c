@@ -6,7 +6,7 @@
 /*   By: dlopez-l <dlopez-l@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/27 19:48:05 by dlopez-l          #+#    #+#             */
-/*   Updated: 2025/05/27 19:59:09 by dlopez-l         ###   ########.fr       */
+/*   Updated: 2025/05/29 15:32:29 by dlopez-l         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,5 +26,4 @@ void	rotate_player(t_data *data, double rotdir)
 	tmp_x = p->plane_x;
 	p->plane_x = p->plane_x * cos(rotspeed) - p->plane_y * sin(rotspeed);
 	p->plane_y = tmp_x * sin(rotspeed) + p->plane_y * cos(rotspeed);
-	data->moved = 1;
 }

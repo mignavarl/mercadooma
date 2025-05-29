@@ -6,7 +6,7 @@
 /*   By: dlopez-l <dlopez-l@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/07 15:59:40 by mignavar          #+#    #+#             */
-/*   Updated: 2025/05/28 11:41:39 by dlopez-l         ###   ########.fr       */
+/*   Updated: 2025/05/29 15:02:28 by dlopez-l         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,6 +48,8 @@ void	free_all(t_data *data)
 	free(data->c_color);
 	free(data->f_color);
 }
+
+//TODO: checkear los movimientos que en una direccion van al reves (EN N Y S)
 
 int	main(int argc, char **argv)
 {

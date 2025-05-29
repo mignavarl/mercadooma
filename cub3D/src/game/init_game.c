@@ -6,7 +6,7 @@
 /*   By: dlopez-l <dlopez-l@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/22 11:39:00 by mignavar          #+#    #+#             */
-/*   Updated: 2025/05/27 19:59:45 by dlopez-l         ###   ########.fr       */
+/*   Updated: 2025/05/29 15:36:09 by dlopez-l         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,17 +30,20 @@ void	my_keyhook(mlx_key_data_t keydata, void* param)
 	t_data	*data;
 
 	data = (t_data *)param;
-	if (keydata.action == MLX_PRESS && (keydata.key == MLX_KEY_W || \
+	if (keydata.key == MLX_KEY_W || \
 		keydata.key == MLX_KEY_S || \
 		keydata.key == MLX_KEY_A || \
-		keydata.key == MLX_KEY_D))
+		keydata.key == MLX_KEY_D || \
+		keydata.key == MLX_KEY_RIGHT || \
+		keydata.key == MLX_KEY_LEFT)
 	{
-		player_move(data, keydata.key);
+		if (keydata.action == MLX_PRESS)
+			key_pressed(data, keydata.key);
+		else if (keydata.action == MLX_RELEASE)
+		{
+		    key_released(data, keydata.key);
+		}
 	}
-	if (keydata.key == MLX_KEY_RIGHT)
-		rotate_player(data, -1);
-	if (keydata.key == MLX_KEY_LEFT)
-		rotate_player(data, 1);
 
 	if (keydata.key == MLX_KEY_J && keydata.action == MLX_PRESS)
 		puts("Hello ");
@@ -81,7 +84,8 @@ bool	init_game(t_data *data)
 	if (!save_images(data->game))
 		return (free_all(data), FALSE);
 	mlx_image_to_window(data->game->mlx, data->game->img, 0, 0);
-
+	render(data);
+	data->moved = 0;
 	//--------------
 	// Register a hook and pass mlx as an optional param.
 	// NOTE: Do this before calling mlx_loop!

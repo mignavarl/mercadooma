@@ -6,7 +6,7 @@
 /*   By: dlopez-l <dlopez-l@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/17 20:09:45 by dlopez-l          #+#    #+#             */
-/*   Updated: 2025/05/27 18:33:25 by dlopez-l         ###   ########.fr       */
+/*   Updated: 2025/05/29 15:35:37 by dlopez-l         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,6 @@ void	update_pixels(t_data *data, t_ray *ray, int x)
 	// 		// mlx_put_pixel(data->game->img, x, y, 0xFFFF0000);
 	// 	y++;
 	// }
-	mlx_image_to_window(data->game->mlx, data->game->img, 0, 0);
 }
 
 void	render_raycast(t_data *data)
@@ -59,8 +58,8 @@ void	render(void *content)
 
 	data = (t_data *)content;
 	//IF !PLAYER MOVED RETURN(0)
+	move_player(data);
 	if (!data->moved)
 		return ;
 	render_raycast(data);
-	data->moved = 0;
 }

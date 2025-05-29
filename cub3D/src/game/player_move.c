@@ -6,44 +6,78 @@
 /*   By: dlopez-l <dlopez-l@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/27 19:48:09 by dlopez-l          #+#    #+#             */
-/*   Updated: 2025/05/27 19:58:59 by dlopez-l         ###   ########.fr       */
+/*   Updated: 2025/05/29 15:33:32 by dlopez-l         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
-void	player_move(t_data *data, keys_t key)
+void	move_player(t_data *data)
 {
 	double	new_x;
 	double	new_y;
 
-	if (key == MLX_KEY_W)
+	if (data->pj->move_y > 0)
 	{
 		new_x = data->pj->pos_x + data->pj->dir_x * MOVESPEED;
 		new_y = data->pj->pos_y + data->pj->dir_y * MOVESPEED;
 		data->pj->pos_x = new_x;
 		data->pj->pos_y = new_y;
 	}
-	if (key == MLX_KEY_S)
+	if (data->pj->move_y < 0)
 	{
 		new_x = data->pj->pos_x - data->pj->dir_x * MOVESPEED;
 		new_y = data->pj->pos_y - data->pj->dir_y * MOVESPEED;
 		data->pj->pos_x = new_x;
 		data->pj->pos_y = new_y;
 	}
-	if (key == MLX_KEY_A)
-	{
-		new_x = data->pj->pos_x - data->pj->dir_y * MOVESPEED;
-		new_y = data->pj->pos_y + data->pj->dir_x * MOVESPEED;
-		data->pj->pos_x = new_x;
-		data->pj->pos_y = new_y;
-	}
-	if (key == MLX_KEY_D)
+	if (data->pj->move_x > 0)
 	{
 		new_x = data->pj->pos_x + data->pj->dir_y * MOVESPEED;
 		new_y = data->pj->pos_y - data->pj->dir_x * MOVESPEED;
 		data->pj->pos_x = new_x;
 		data->pj->pos_y = new_y;
 	}
-	data->moved = 1;
+	if (data->pj->move_x < 0)
+	{
+		new_x = data->pj->pos_x - data->pj->dir_y * MOVESPEED;
+		new_y = data->pj->pos_y + data->pj->dir_x * MOVESPEED;
+		data->pj->pos_x = new_x;
+		data->pj->pos_y = new_y;
+	}
+	rotate_player(data, data->pj->rotate);
+}
+
+void	key_released(t_data *data, keys_t key)
+{
+	if (key == MLX_KEY_W)
+		data->pj->move_y = 0;
+	if (key == MLX_KEY_S)
+		data->pj->move_y = 0;
+	if (key == MLX_KEY_A)
+		data->pj->move_x = 0;
+	if (key == MLX_KEY_D)
+		data->pj->move_x = 0;
+	if (key == MLX_KEY_LEFT)
+		data->pj->rotate = 0;
+	if (key == MLX_KEY_RIGHT)
+		data->pj->rotate = 0;
+	data->moved -= 1;
+}
+
+void	key_pressed(t_data *data, keys_t key)
+{
+	if (key == MLX_KEY_W)
+		data->pj->move_y += 1;
+	if (key == MLX_KEY_S)
+		data->pj->move_y -= 1;
+	if (key == MLX_KEY_A)
+		data->pj->move_x -= 1;
+	if (key == MLX_KEY_D)
+		data->pj->move_x += 1;
+	if (key == MLX_KEY_LEFT)
+		data->pj->rotate += 1;
+	if (key == MLX_KEY_RIGHT)
+		data->pj->rotate -= 1;
+	data->moved += 1;
 }
