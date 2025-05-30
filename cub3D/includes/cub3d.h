@@ -6,7 +6,7 @@
 /*   By: dlopez-l <dlopez-l@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/07 16:00:05 by mignavar          #+#    #+#             */
-/*   Updated: 2025/05/29 15:46:32 by dlopez-l         ###   ########.fr       */
+/*   Updated: 2025/05/30 12:56:15 by dlopez-l         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,8 @@
 
 # define WIDTH 1080
 # define HEIGHT 720
+# define TX_WIDTH 512
+# define TX_HEIGHT 512
 # define MOVESPEED 0.0125
 # define ROTSPEED 0.015
 
@@ -60,6 +62,8 @@ struct s_data
 	int		ceiling;
 	int		floor;
 	int		moved;
+	int		win_width;
+	int		win_height;
 	t_game	*game;
 	t_pj	*pj;
 };
@@ -68,6 +72,7 @@ struct s_game
 {
 	mlx_t			*mlx;
 	mlx_image_t		*img;
+	mlx_texture_t	*tx_hit;
 	mlx_texture_t	*tx_north;
 	mlx_texture_t	*tx_south;
 	mlx_texture_t	*tx_east;
@@ -130,9 +135,10 @@ void	move_player(t_data *data);
 
 //----------- RENDER ----------------
 void	render(void *data);
-t_ray	*init_ray(void);
 void	raycast(t_pj *player, t_data *data);
 void	update_pixels(t_data *data, t_ray *ray, int x);
+bool	has_resized(int win, int new);
+void	texture_paint(t_data *data, t_ray *ray, int x, int *y);
 
 //textures
 bool	save_textures(t_game *game, t_data *data);

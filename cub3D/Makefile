@@ -26,7 +26,9 @@ SRCS = main.c\
 	$(PARS_DIR)init_parse.c\
 	$(PARS_DIR)parse_map.c\
 	$(REND_DIR)render.c\
-	$(REND_DIR)raycast.c
+	$(REND_DIR)raycast.c\
+	$(REND_DIR)texture.c\
+	$(REND_DIR)resize_utils.c
 #~~~~~~ Obj Files ~~~~~~~
 OBJ_FILES = $(SRCS:.c=.o)
 OBJS = $(addprefix $(OBJ_DIR), $(OBJ_FILES))

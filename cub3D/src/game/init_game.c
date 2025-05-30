@@ -6,7 +6,7 @@
 /*   By: dlopez-l <dlopez-l@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/22 11:39:00 by mignavar          #+#    #+#             */
-/*   Updated: 2025/05/29 15:36:09 by dlopez-l         ###   ########.fr       */
+/*   Updated: 2025/05/30 11:50:20 by dlopez-l         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,11 +72,9 @@ bool	init_game(t_data *data)
 	if (!data->game)
 		return false;
 	mlx_set_setting(MLX_DECORATED, true);
-	data->game->mlx = mlx_init(WIDTH, HEIGHT, "42Balls", false); //TODO en mi portatil no se ejecuta esta linea
+	data->game->mlx = mlx_init(WIDTH, HEIGHT, "42Balls", true);
 	if (!data->game->mlx)
 		ft_error();
-	ft_printf("WINDOW => %p\t WIDTH => %i\t HEIGHT => %i\n", data->game->mlx->window, data->game->mlx->width, data->game->mlx->height);
-	/* Do stuff */
 	data->moved = 1;
 	if (!save_textures(data->game, data))
 		return (free_all(data), FALSE);
@@ -84,12 +82,10 @@ bool	init_game(t_data *data)
 	if (!save_images(data->game))
 		return (free_all(data), FALSE);
 	mlx_image_to_window(data->game->mlx, data->game->img, 0, 0);
+	data->win_height = HEIGHT;
+	data->win_width = WIDTH;
 	render(data);
 	data->moved = 0;
-	//--------------
-	// Register a hook and pass mlx as an optional param.
-	// NOTE: Do this before calling mlx_loop!
-	//mlx_loop_hook(data->game->mlx, ft_hook, data->game->mlx);
 	mlx_loop_hook(data->game->mlx, render, data);
 	mlx_key_hook(data->game->mlx, &my_keyhook, data);
 	mlx_loop(data->game->mlx);

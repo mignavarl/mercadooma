@@ -6,7 +6,7 @@
 /*   By: dlopez-l <dlopez-l@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/17 20:09:45 by dlopez-l          #+#    #+#             */
-/*   Updated: 2025/05/29 15:35:37 by dlopez-l         ###   ########.fr       */
+/*   Updated: 2025/05/30 12:56:36 by dlopez-l         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,40 +16,32 @@ void	update_pixels(t_data *data, t_ray *ray, int x)
 {
 	int	y;
 
-	// y = ray->draw_start;
 	y = 0;
-	//mlx_put_pixel(img, 300, 200, 0xFFFF0000);
-	// printf("y = %d\nend = %d\n", y, ray->draw_end);
-	while (y < HEIGHT)
+	while (y < ray->draw_start)
 	{
-		if (y < ray->draw_start)
-			mlx_put_pixel(data->game->img, x, y, data->ceiling);
-		else if (y > ray->draw_start && y < ray->draw_end)
-			mlx_put_pixel(data->game->img, x, y, 0xFFE64FFF);
-		else
-			mlx_put_pixel(data->game->img, x, y, data->floor);
+		mlx_put_pixel(data->game->img, x, y, data->ceiling);
 		y++;
 	}
-	
-	// while (y < ray->draw_end)
-	// {
-	// 	// printf("x = %d\ny = %d\n", x, y);
-	// 	// printf("DATA = %p\n", data->game->img);
-	// 	// mlx_put_pixel(data->game->img, x, y, data->ceiling);
-	// 	mlx_put_pixel(data->game->img, x, y, 0xFF0000FF);
-	// 	// if (ray->side == 1)
-	// 	// else if (ray->side == 0)
-	// 		// mlx_put_pixel(data->game->img, x, y, 0xFFFF0000);
-	// 	y++;
-	// }
+	texture_paint(data, ray, x, &y);
+		//mlx_put_pixel(data->game->img, x, y, 0xFFE64FFF); // color de la textura
+	while (y < data->game->mlx->height)
+	{
+		mlx_put_pixel(data->game->img, x, y, data->floor);
+		y++;
+	}
 }
 
 void	render_raycast(t_data *data)
 {
-	//init_ray(data.ray);
-	printf("raycasteo\n");
+	if (has_resized(data->win_height, data->game->mlx->height)
+		|| has_resized(data->win_width, data->game->mlx->width))
+	{
+		mlx_resize_image(data->game->img, data->game->mlx->width, \
+			data->game->mlx->height);
+		data->win_height = data->game->mlx->height;
+		data->win_width = data->game->mlx->width;
+	}
 	raycast(data->pj, data);
-
 }
 
 void	render(void *content)
@@ -57,7 +49,6 @@ void	render(void *content)
 	t_data	*data;
 
 	data = (t_data *)content;
-	//IF !PLAYER MOVED RETURN(0)
 	move_player(data);
 	if (!data->moved)
 		return ;
