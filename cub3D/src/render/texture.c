@@ -6,7 +6,7 @@
 /*   By: dlopez-l <dlopez-l@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/30 11:59:18 by dlopez-l          #+#    #+#             */
-/*   Updated: 2025/05/30 13:45:29 by dlopez-l         ###   ########.fr       */
+/*   Updated: 2025/05/30 15:36:09 by dlopez-l         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,17 +17,17 @@ void	get_texture_index(t_data *data, t_ray *ray)
 	data->game->tx_hit = data->game->tx_south;
 	if (ray->side == 0)
 	{
-		// if (ray->dir_x < 0)
-		// 	data->texinfo.index = WEST;
-		// else
-		// 	data->texinfo.index = EAST;
+		if (ray->dir_x < 0)
+			data->game->tx_hit = data->game->tx_west;
+		else
+			data->game->tx_hit = data->game->tx_east;
 	}
 	else
 	{
-		// if (ray->dir_y > 0)
-		// 	data->texinfo.index = SOUTH;
-		// else
-		// 	data->texinfo.index = NORTH;
+		if (ray->dir_y > 0)
+			data->game->tx_hit = data->game->tx_south;
+		else
+			data->game->tx_hit = data->game->tx_north;
 	}
 }
 
