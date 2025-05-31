@@ -6,7 +6,7 @@
 /*   By: dlopez-l <dlopez-l@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/30 11:59:18 by dlopez-l          #+#    #+#             */
-/*   Updated: 2025/05/30 15:36:09 by dlopez-l         ###   ########.fr       */
+/*   Updated: 2025/05/31 18:17:17 by dlopez-l         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,12 +41,12 @@ void	texture_paint(t_data *data, t_ray *ray, int x, int *y)
 
 	get_texture_index(data, ray);
 	tex_x = (int)(ray->wall_x * (double)TX_WIDTH);
-	if (tex_x < 0)
-		tex_x = 0;
-	if (tex_x >= TX_WIDTH)
-		tex_x = TX_WIDTH - 1;
-	step = 1 * TX_HEIGHT / ray->line_height;
-	tex_pos = (ray->draw_start - data->win_height / 2 + ray->line_height / 2) * step;
+	if ((ray->side == 0 && ray->dir_x < 0)
+		|| (ray->side == 1 && ray->dir_y > 0))
+		tex_x = TX_HEIGHT - tex_x - 1;
+	step = ((double)TX_HEIGHT / (double)ray->line_height);
+	tex_pos = (ray->draw_start - data->win_height / 2
+			+ ray->line_height / 2) * step;
 	while ((*y) < ray->draw_end)
 	{
 		tex_y = (int) tex_pos & (TX_HEIGHT - 1);

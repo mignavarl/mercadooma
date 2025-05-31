@@ -6,7 +6,7 @@
 /*   By: dlopez-l <dlopez-l@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/17 20:03:00 by dlopez-l          #+#    #+#             */
-/*   Updated: 2025/05/30 13:37:33 by dlopez-l         ###   ########.fr       */
+/*   Updated: 2025/05/31 17:59:15 by dlopez-l         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,6 @@
 
 void	init_raycast(int x, t_ray *ray, t_pj *player, t_data *data)
 {
-	// init_ray(ray);
 	ray->camera_x = 2 * x / (double)(data->game->mlx->width) - 1;
 	ray->map_x = (int)player->pos_x;
 	ray->map_y = (int)player->pos_y;
@@ -22,7 +21,6 @@ void	init_raycast(int x, t_ray *ray, t_pj *player, t_data *data)
 	ray->dir_y = player->dir_y + player->plane_y * ray->camera_x;
 	ray->deltadist_x = fabs(1 / ray->dir_x);
 	ray->deltadist_y = fabs(1 / ray->dir_y);
-	// printf("dir_y = %f -- plane_y = %f -- camera_x = %f\n", player->dir_y, player->plane_y, ray->camera_x);
 }
 
 void	calc_dda(t_ray *ray, t_pj *player)
@@ -68,7 +66,7 @@ void	loop_dda(t_ray *ray, t_data *data)
 			ray->map_y += ray->step_y;
 			ray->side = 1;
 		}
-		if (data->map[ray->map_x][ray->map_y] > '0')
+		if (data->map[ray->map_y][ray->map_x] > '0')
 			hit = 1;
 	}
 }
@@ -79,13 +77,13 @@ void	calc_line_height(t_ray *ray, t_data *data, t_pj *player)
 		ray->wall_dist = ray->sidedist_x - ray->deltadist_x;
 	else
 		ray->wall_dist = ray->sidedist_y - ray->deltadist_y;
-	ray->line_height = (int)(data->game->mlx->height / ray->wall_dist);
-	ray->draw_start = -(ray->line_height) / 2 + data->game->mlx->height / 2;
+	ray->line_height = (int)(data->win_height / ray->wall_dist);
+	ray->draw_start = -(ray->line_height) / 2 + data->win_height / 2;
 	if (ray->draw_start < 0)
 		ray->draw_start = 0;
-	ray->draw_end = ray->line_height / 2 + data->game->mlx->height / 2;
-	if (ray->draw_end >= data->game->mlx->height)
-		ray->draw_end = data->game->mlx->height - 1;
+	ray->draw_end = ray->line_height / 2 + data->win_height / 2;
+	if (ray->draw_end >= data->win_height)
+		ray->draw_end = data->win_height - 1;
 	if (ray->side == 0)
 		ray->wall_x = player->pos_y + ray->wall_dist * ray->dir_y;
 	else
