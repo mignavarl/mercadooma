@@ -6,7 +6,7 @@
 /*   By: dlopez-l <dlopez-l@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/30 11:59:18 by dlopez-l          #+#    #+#             */
-/*   Updated: 2025/05/31 18:17:17 by dlopez-l         ###   ########.fr       */
+/*   Updated: 2025/06/06 12:10:31 by dlopez-l         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,9 +58,6 @@ void	texture_paint(t_data *data, t_ray *ray, int x, int *y)
 		uint8_t b = pixel[2];
 		uint8_t a = pixel[3];
 		color = (r << 24) | (g << 16) | (b << 8) | a;
-		// color = data->game->tx_hit->pixels[TX_HEIGHT * tex_y + tex_x];
-		if (ray->side == 0)
-			color = (color >> 1) & 8355711;
 		mlx_put_pixel(data->game->img, x, (*y), color);
 		(*y)++;
 	}

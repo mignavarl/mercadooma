@@ -6,7 +6,7 @@
 /*   By: dlopez-l <dlopez-l@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/27 19:48:09 by dlopez-l          #+#    #+#             */
-/*   Updated: 2025/05/29 15:33:32 by dlopez-l         ###   ########.fr       */
+/*   Updated: 2025/06/06 12:16:50 by dlopez-l         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,29 +21,41 @@ void	move_player(t_data *data)
 	{
 		new_x = data->pj->pos_x + data->pj->dir_x * MOVESPEED;
 		new_y = data->pj->pos_y + data->pj->dir_y * MOVESPEED;
-		data->pj->pos_x = new_x;
-		data->pj->pos_y = new_y;
+		if (data->map[(int)new_y][(int)new_x] == '0')
+		{
+			data->pj->pos_x = new_x;
+			data->pj->pos_y = new_y;
+		}
 	}
 	if (data->pj->move_y < 0)
 	{
 		new_x = data->pj->pos_x - data->pj->dir_x * MOVESPEED;
 		new_y = data->pj->pos_y - data->pj->dir_y * MOVESPEED;
-		data->pj->pos_x = new_x;
-		data->pj->pos_y = new_y;
+		if (data->map[(int)new_y][(int)new_x] == '0')
+		{
+			data->pj->pos_x = new_x;
+			data->pj->pos_y = new_y;
+		}
 	}
 	if (data->pj->move_x > 0)
 	{
 		new_x = data->pj->pos_x + data->pj->dir_y * MOVESPEED;
 		new_y = data->pj->pos_y - data->pj->dir_x * MOVESPEED;
-		data->pj->pos_x = new_x;
-		data->pj->pos_y = new_y;
+		if (data->map[(int)new_y][(int)new_x] == '0')
+		{
+			data->pj->pos_x = new_x;
+			data->pj->pos_y = new_y;
+		}
 	}
 	if (data->pj->move_x < 0)
 	{
 		new_x = data->pj->pos_x - data->pj->dir_y * MOVESPEED;
 		new_y = data->pj->pos_y + data->pj->dir_x * MOVESPEED;
-		data->pj->pos_x = new_x;
-		data->pj->pos_y = new_y;
+		if (data->map[(int)new_y][(int)new_x] == '0')
+		{
+			data->pj->pos_x = new_x;
+			data->pj->pos_y = new_y;
+		}
 	}
 	rotate_player(data, data->pj->rotate);
 }

@@ -6,7 +6,7 @@
 /*   By: dlopez-l <dlopez-l@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/17 20:09:45 by dlopez-l          #+#    #+#             */
-/*   Updated: 2025/05/30 12:56:36 by dlopez-l         ###   ########.fr       */
+/*   Updated: 2025/06/06 12:48:14 by dlopez-l         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,6 @@ void	update_pixels(t_data *data, t_ray *ray, int x)
 		y++;
 	}
 	texture_paint(data, ray, x, &y);
-		//mlx_put_pixel(data->game->img, x, y, 0xFFE64FFF); // color de la textura
 	while (y < data->game->mlx->height)
 	{
 		mlx_put_pixel(data->game->img, x, y, data->floor);
