@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dlopez-l <dlopez-l@student.42madrid.com    +#+  +:+       +#+        */
+/*   By: david <david@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/07 16:00:05 by mignavar          #+#    #+#             */
-/*   Updated: 2025/05/30 12:56:15 by dlopez-l         ###   ########.fr       */
+/*   Updated: 2025/06/14 11:29:15 by david            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,8 +29,8 @@
 # define HEIGHT 720
 # define TX_WIDTH 512
 # define TX_HEIGHT 512
-# define MOVESPEED 0.0125
-# define ROTSPEED 0.015
+# define MOVESPEED 0.025
+# define ROTSPEED 0.05
 
 //COLORS
 # define RED	"\001\033[1;31m\002"
