@@ -6,7 +6,7 @@
 /*   By: dlopez-l <dlopez-l@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/07 15:59:40 by mignavar          #+#    #+#             */
-/*   Updated: 2025/05/29 15:02:28 by dlopez-l         ###   ########.fr       */
+/*   Updated: 2025/06/15 11:35:21 by dlopez-l         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,7 +60,6 @@ int	main(int argc, char **argv)
 	if (ft_strncmp(&argv[1][(ft_strlen(argv[1]) - 4)], ".cub", 4) != 0)
 		return (print_error("Extension not valid"), 1);
 	data = ft_calloc(1, sizeof(t_data));
-	// ft_bzero(&data, sizeof(t_data));
 	data->total_line = count_line(argv[1]);
 	if (data->total_line < 10)
 		return (print_error("Invalid document"), 1);
