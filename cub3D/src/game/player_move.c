@@ -6,7 +6,7 @@
 /*   By: dlopez-l <dlopez-l@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/27 19:48:09 by dlopez-l          #+#    #+#             */
-/*   Updated: 2025/06/06 12:16:50 by dlopez-l         ###   ########.fr       */
+/*   Updated: 2025/06/15 11:46:09 by dlopez-l         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,12 +84,12 @@ void	key_pressed(t_data *data, keys_t key)
 	if (key == MLX_KEY_S)
 		data->pj->move_y -= 1;
 	if (key == MLX_KEY_A)
-		data->pj->move_x -= 1;
-	if (key == MLX_KEY_D)
 		data->pj->move_x += 1;
+	if (key == MLX_KEY_D)
+		data->pj->move_x -= 1;
 	if (key == MLX_KEY_LEFT)
-		data->pj->rotate += 1;
-	if (key == MLX_KEY_RIGHT)
 		data->pj->rotate -= 1;
+	if (key == MLX_KEY_RIGHT)
+		data->pj->rotate += 1;
 	data->moved += 1;
 }

@@ -6,7 +6,7 @@
 /*   By: dlopez-l <dlopez-l@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/27 17:51:55 by dlopez-l          #+#    #+#             */
-/*   Updated: 2025/05/27 19:25:48 by dlopez-l         ###   ########.fr       */
+/*   Updated: 2025/06/15 11:43:16 by dlopez-l         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,28 +14,19 @@
 
 void	init_north_south(t_pj *player)
 {
-	if (player->view == 'N')
+	if (player->view == 'S')
 	{
-
-		player->dir_x = -1;
-		player->dir_y = 0;
-		player->plane_x = 0;
-		player->plane_y = -1;
-		// player->dir_x = 0;
-		// player->dir_y = -1;
-		// player->plane_x = -0.66;
-		// player->plane_y = 0;
+		player->dir_x = 0;
+		player->dir_y = 1;
+		player->plane_x = -0.66;
+		player->plane_y = 0;
 	}
-	else if (player->view == 'S')
+	else if (player->view == 'N')
 	{
-		player->dir_x = 1;
-		player->dir_y = 0;
-		player->plane_x = 0;
-		player->plane_y = 1;
-		// player->dir_x = 0;
-		// player->dir_y = 1;
-		// player->plane_x = 0.66;
-		// player->plane_y = 0;
+		player->dir_x = 0;
+		player->dir_y = -1;
+		player->plane_x = 0.66;
+		player->plane_y = 0;
 	}
 	else
 		return ;
@@ -43,27 +34,19 @@ void	init_north_south(t_pj *player)
 
 void	init_east_west(t_pj *player)
 {
-	if (player->view == 'E')
+	if (player->view == 'W')
 	{
-		player->dir_x = 0;
-		player->dir_y = 1;
-		player->plane_x = 1;
-		player->plane_y = 0;
-		// player->dir_x = -1;
-		// player->dir_y = 0;
-		// player->plane_x = 0;
-		// player->plane_y = -0.66;
+		player->dir_x = -1;
+		player->dir_y = 0;
+		player->plane_x = 0;
+		player->plane_y = -0.66;
 	}
-	else if (player->view == 'W')
+	else if (player->view == 'E')
 	{
-		player->dir_x = 0;
-		player->dir_y = -1;
-		player->plane_x = -1;
-		player->plane_y = 0;
-		// player->dir_x = 1;
-		// player->dir_y = 0;
-		// player->plane_x = 0;
-		// player->plane_y = 0.66;
+		player->dir_x = 1;
+		player->dir_y = 0;
+		player->plane_x = 0;
+		player->plane_y = 0.66;
 	}
 	else
 		return ;
