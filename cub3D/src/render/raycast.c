@@ -6,7 +6,7 @@
 /*   By: dlopez-l <dlopez-l@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/17 20:03:00 by dlopez-l          #+#    #+#             */
-/*   Updated: 2025/06/06 15:14:47 by dlopez-l         ###   ########.fr       */
+/*   Updated: 2025/06/16 11:25:09 by dlopez-l         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,8 +66,7 @@ void	loop_dda(t_ray *ray, t_data *data)
 			ray->map_y += ray->step_y;
 			ray->side = 1;
 		}
-		printf("Aqui abajo da segfault => x = %d y = %d\n", ray->map_x, ray->map_y);
-		if (data->map[(int)ray->map_y][(int)ray->map_x] > '0')
+		if (data->map[(int)ray->map_y][(int)ray->map_x] == '1')
 			hit = 1;
 	}
 }

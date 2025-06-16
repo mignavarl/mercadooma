@@ -6,7 +6,7 @@
 /*   By: dlopez-l <dlopez-l@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/08 11:47:35 by mignavar          #+#    #+#             */
-/*   Updated: 2025/06/15 11:36:29 by dlopez-l         ###   ########.fr       */
+/*   Updated: 2025/06/16 11:48:13 by dlopez-l         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,7 +81,6 @@ void	player_pos(t_data *data, char **map)
 	int		pos;
 
 	data->pj = ft_calloc(1, sizeof(t_pj));
-	// ft_bzero(&pj, sizeof(t_pj));
 	line = 0;
 	while (map[line])
 	{
@@ -91,9 +90,10 @@ void	player_pos(t_data *data, char **map)
 			if (map[line][pos] == 'N' || map[line][pos] == 'S'
 				|| map[line][pos] == 'E' || map[line][pos] == 'W')
 				{
-					data->pj->pos_x = line;
-					data->pj->pos_y = pos;
+					data->pj->pos_x = pos;
+					data->pj->pos_y = line;
 					data->pj->view = map[line][pos];
+					map[line][pos] = 0;
 					init_player_dir(data);
 					return ;
 				}
