@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   texture.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dlopez-l <dlopez-l@student.42madrid.com    +#+  +:+       +#+        */
+/*   By: mignavar <mignavar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/30 11:59:18 by dlopez-l          #+#    #+#             */
-/*   Updated: 2025/06/18 11:12:05 by dlopez-l         ###   ########.fr       */
+/*   Updated: 2025/06/18 12:38:55 by mignavar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ void	get_texture_index(t_data *data, t_ray *ray)
 	data->game->tx_hit = data->game->tx_south;
 	if (ray->door)
 	{
-		data->game->tx_hit = data->game->tx_south;
+		data->game->tx_hit = data->game->tx_door;
 		return ;
 	}
 	if (ray->side == 0)

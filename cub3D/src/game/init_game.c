@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   init_game.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dlopez-l <dlopez-l@student.42madrid.com    +#+  +:+       +#+        */
+/*   By: mignavar <mignavar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/22 11:39:00 by mignavar          #+#    #+#             */
-/*   Updated: 2025/06/18 11:25:44 by dlopez-l         ###   ########.fr       */
+/*   Updated: 2025/06/18 12:55:03 by mignavar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,7 +52,7 @@ bool	init_game(t_data *data)
 	if (!data->game)
 		return (false);
 	mlx_set_setting(MLX_DECORATED, true);
-	data->game->mlx = mlx_init(WIDTH, HEIGHT, "42Balls", true);
+	data->game->mlx = mlx_init(WIDTH, HEIGHT, "Mercadooma", true);
 	if (!data->game->mlx)
 		ft_error();
 	data->moved = 1;

@@ -1,6 +1,6 @@
 SO ./textures/congelados_pixel.png
-F 67,33,163
-C 225,30,0
+F 129,110,30
+C 236,212,133
 EA ./textures/drogueria_pixel.png
 NO ./textures/fruteria_pixel.png
 WE ./textures/pan_pixel.png

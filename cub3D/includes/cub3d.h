@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dlopez-l <dlopez-l@student.42madrid.com    +#+  +:+       +#+        */
+/*   By: mignavar <mignavar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/07 16:00:05 by mignavar          #+#    #+#             */
-/*   Updated: 2025/06/18 11:31:03 by dlopez-l         ###   ########.fr       */
+/*   Updated: 2025/06/18 12:53:22 by mignavar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,10 +77,12 @@ struct s_game
 	mlx_texture_t	*tx_south;
 	mlx_texture_t	*tx_east;
 	mlx_texture_t	*tx_west;
+	mlx_texture_t	*tx_door;
 	mlx_image_t		*im_north;
 	mlx_image_t		*im_south;
 	mlx_image_t		*im_east;
 	mlx_image_t		*im_west;
+	mlx_image_t		*im_door;
 	mlx_texture_t	*icon;
 };
 
@@ -172,5 +174,4 @@ void	free_map(t_data *data);
 void	free_texture(t_data *data, int tx);
 void	print_error(char *text);
 
-void	print_map(t_data *data);//TODO: boorar
 #endif

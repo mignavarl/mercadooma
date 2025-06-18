@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   init_parse.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dlopez-l <dlopez-l@student.42madrid.com    +#+  +:+       +#+        */
+/*   By: mignavar <mignavar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/08 11:47:35 by mignavar          #+#    #+#             */
-/*   Updated: 2025/06/16 11:48:13 by dlopez-l         ###   ########.fr       */
+/*   Updated: 2025/06/18 12:53:43 by mignavar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,20 +61,6 @@ bool	extract_map(t_data *data)
 	return (TRUE);
 }
 
-void	print_map(t_data *data)//TODO: BORRAR
-{
-	int	i;
-
-	i = 0;
-	printf(YELLOW"MAPA"END"\n");
-	while (data->map[i])
-	{
-		printf("%s\n", data->map[i]);
-		i++;
-	}
-	printf(YELLOW"FIN MAPA"END"\n");
-}
-
 void	player_pos(t_data *data, char **map)
 {
 	int		line;
@@ -109,7 +95,6 @@ bool	init_parse(t_data *data, char *arg)
 		return (print_error("Problem with document"), FALSE);
 	if (!extract_map(data))
 		return (FALSE);
-	print_map(data);//TODO: BORRAR
 	if (!parse_map(data))
 		return (FALSE);
 	player_pos(data, data->map);

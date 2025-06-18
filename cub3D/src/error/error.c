@@ -6,7 +6,7 @@
 /*   By: mignavar <mignavar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/08 12:37:24 by mignavar          #+#    #+#             */
-/*   Updated: 2025/04/15 11:25:01 by mignavar         ###   ########.fr       */
+/*   Updated: 2025/06/18 12:55:26 by mignavar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,20 +16,6 @@ void	print_error(char *text)
 {
 	ft_putendl_fd("Error", 2);
 	ft_putendl_fd(text, 2);
-}
-
-void	print_doc(char **doc)//TODO:borrar
-{
-	int	i;
-
-	i = 0;
-	printf(YELLOW"DOC"END"\n");
-	while (doc[i])
-	{
-		printf("%s\n", doc[i]);
-		i++;
-	}
-	printf(YELLOW"END DOC"END"\n");
 }
 
 void	free_map(t_data *data)

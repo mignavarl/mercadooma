@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parse_map.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dlopez-l <dlopez-l@student.42madrid.com    +#+  +:+       +#+        */
+/*   By: mignavar <mignavar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/08 17:27:22 by mignavar          #+#    #+#             */
-/*   Updated: 2025/06/18 11:14:56 by dlopez-l         ###   ########.fr       */
+/*   Updated: 2025/06/18 12:53:01 by mignavar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -119,6 +119,5 @@ bool	parse_map(t_data *data)
 		free_map(data);
 		return (FALSE);
 	}
-	printf(GREEN"Mapa bien"END"\n");
 	return (TRUE);
 }

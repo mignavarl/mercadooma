@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dlopez-l <dlopez-l@student.42madrid.com    +#+  +:+       +#+        */
+/*   By: mignavar <mignavar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/07 15:59:40 by mignavar          #+#    #+#             */
-/*   Updated: 2025/06/18 11:14:30 by dlopez-l         ###   ########.fr       */
+/*   Updated: 2025/06/18 12:52:40 by mignavar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,8 +48,6 @@ void	free_all(t_data *data)
 	free(data->c_color);
 	free(data->f_color);
 }
-
-//TODO: checkear los movimientos que en una direccion van al reves (EN N Y S)
 
 int	main(int argc, char **argv)
 {

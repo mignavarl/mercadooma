@@ -6,7 +6,7 @@
 /*   By: mignavar <mignavar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/15 11:27:26 by mignavar          #+#    #+#             */
-/*   Updated: 2025/04/16 15:55:30 by mignavar         ###   ########.fr       */
+/*   Updated: 2025/06/18 12:53:56 by mignavar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,6 +75,5 @@ bool	extract_texture(char **doc, t_data *data)
 	data->we_texture = search_texture(doc, data->we_texture, "WE");
 	if (!data->we_texture)
 		return (free_texture(data, tx), FALSE);
-	printf("TODAS LAS TEXTURAS:\nNO = '%s'\nSO = '%s'\nEA = '%s'\nWE = '%s'\n", data->no_texture, data->so_texture, data->ea_texture, data->we_texture);
 	return (TRUE);
 }

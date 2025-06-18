@@ -6,7 +6,7 @@
 /*   By: mignavar <mignavar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/16 11:20:52 by mignavar          #+#    #+#             */
-/*   Updated: 2025/04/17 17:59:22 by mignavar         ###   ########.fr       */
+/*   Updated: 2025/06/18 12:54:07 by mignavar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,6 +62,5 @@ bool	extract_color(char **doc, t_data *data)
 	data->f_color = search_color(doc, data->f_color, "F");
 	if (!data->f_color)
 		return (free_color(data, col), FALSE);
-	printf("COLORES:\nC = '%s'\nF = '%s'\n", data->c_color, data->f_color);
 	return (TRUE);
 }
