@@ -6,7 +6,7 @@
 /*   By: mignavar <mignavar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/14 12:47:29 by mignavar          #+#    #+#             */
-/*   Updated: 2025/04/14 18:03:42 by mignavar         ###   ########.fr       */
+/*   Updated: 2025/06/18 15:26:13 by mignavar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 bool	check_side(int c)
 {
-	if (c == '0' || c == 'N' || c == 'S' || c == 'W' || c == 'E')
+	if (c == '0' || c == 'N' || c == 'S' || c == 'W' || c == 'E' || c == '2')
 		return (FALSE);
 	return (TRUE);
 }
