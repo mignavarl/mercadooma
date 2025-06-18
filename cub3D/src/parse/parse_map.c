@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parse_map.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mignavar <mignavar@student.42.fr>          +#+  +:+       +#+        */
+/*   By: dlopez-l <dlopez-l@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/08 17:27:22 by mignavar          #+#    #+#             */
-/*   Updated: 2025/04/15 11:25:20 by mignavar         ###   ########.fr       */
+/*   Updated: 2025/06/18 11:14:56 by dlopez-l         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,7 +53,7 @@ bool	map_letter(char **map)
 			if (map[line][pos] != '0' && map[line][pos] != '1'
 				&& map[line][pos] != 'N' && map[line][pos] != 'S'
 				&& map[line][pos] != 'E' && map[line][pos] != 'W'
-				&& map[line][pos] != ' ')
+				&& map[line][pos] != ' ' && map[line][pos] != '2')
 				return (print_error("Incorrect characters in map"), FALSE);
 			pos++;
 		}

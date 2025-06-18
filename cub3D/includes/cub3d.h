@@ -6,7 +6,7 @@
 /*   By: dlopez-l <dlopez-l@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/07 16:00:05 by mignavar          #+#    #+#             */
-/*   Updated: 2025/06/14 11:32:10 by dlopez-l         ###   ########.fr       */
+/*   Updated: 2025/06/18 11:31:03 by dlopez-l         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -118,6 +118,7 @@ struct s_ray
 	int		line_height;
 	int		draw_start;
 	int		draw_end;
+	int		door;
 };
 
 
@@ -136,6 +137,7 @@ void	move_player(t_data *data);
 //----------- RENDER ----------------
 void	render(void *data);
 void	raycast(t_pj *player, t_data *data);
+void	render_raycast(t_data *data);
 void	update_pixels(t_data *data, t_ray *ray, int x);
 bool	has_resized(int win, int new);
 void	texture_paint(t_data *data, t_ray *ray, int x, int *y);

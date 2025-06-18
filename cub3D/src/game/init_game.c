@@ -6,7 +6,7 @@
 /*   By: dlopez-l <dlopez-l@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/22 11:39:00 by mignavar          #+#    #+#             */
-/*   Updated: 2025/06/06 12:47:40 by dlopez-l         ###   ########.fr       */
+/*   Updated: 2025/06/18 11:25:44 by dlopez-l         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,13 +18,6 @@ static void ft_error(void)
 	exit(EXIT_FAILURE);
 }
 
-// static void ft_hook(void* param)
-// {
-// 	const mlx_t* mlx = param;
-
-// 	printf("WIDTH: %d | HEIGHT: %d\n", mlx->width, mlx->height);
-// }
-
 void	my_keyhook(mlx_key_data_t keydata, void* param)
 {
 	t_data	*data;
@@ -35,26 +28,14 @@ void	my_keyhook(mlx_key_data_t keydata, void* param)
 		keydata.key == MLX_KEY_A || \
 		keydata.key == MLX_KEY_D || \
 		keydata.key == MLX_KEY_RIGHT || \
-		keydata.key == MLX_KEY_LEFT)
+		keydata.key == MLX_KEY_LEFT || \
+		keydata.key == MLX_KEY_SPACE)
 	{
 		if (keydata.action == MLX_PRESS)
 			key_pressed(data, keydata.key);
 		else if (keydata.action == MLX_RELEASE)
-		{
-		    key_released(data, keydata.key);
-		}
+			key_released(data, keydata.key);
 	}
-
-	if (keydata.key == MLX_KEY_J && keydata.action == MLX_PRESS)
-		puts("Hello ");
-
-	// If we RELEASE the 'K' key, print "World".
-	if (keydata.key == MLX_KEY_K && keydata.action == MLX_RELEASE)
-		puts("World");
-
-	// If we HOLD the 'L' key, print "!".
-	if (keydata.key == MLX_KEY_L && keydata.action == MLX_REPEAT)
-		puts("!");
 	if (keydata.key == MLX_KEY_ESCAPE && keydata.action == MLX_PRESS)
 	{
 		mlx_close_window(data->game->mlx);
@@ -67,10 +48,9 @@ void	my_keyhook(mlx_key_data_t keydata, void* param)
 
 bool	init_game(t_data *data)
 {
-	// MLX allows you to define its core behaviour before startup.
 	data->game = ft_calloc(1, sizeof(t_game));
 	if (!data->game)
-		return false;
+		return (false);
 	mlx_set_setting(MLX_DECORATED, true);
 	data->game->mlx = mlx_init(WIDTH, HEIGHT, "42Balls", true);
 	if (!data->game->mlx)

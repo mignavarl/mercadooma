@@ -6,7 +6,7 @@
 /*   By: dlopez-l <dlopez-l@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/17 20:03:00 by dlopez-l          #+#    #+#             */
-/*   Updated: 2025/06/16 11:25:09 by dlopez-l         ###   ########.fr       */
+/*   Updated: 2025/06/18 11:10:48 by dlopez-l         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,6 +52,7 @@ void	loop_dda(t_ray *ray, t_data *data)
 	int	hit;
 
 	hit = 0;
+	ray->door = 0;
 	while (hit == 0)
 	{
 		if (ray->sidedist_x < ray->sidedist_y)
@@ -66,8 +67,12 @@ void	loop_dda(t_ray *ray, t_data *data)
 			ray->map_y += ray->step_y;
 			ray->side = 1;
 		}
-		if (data->map[(int)ray->map_y][(int)ray->map_x] == '1')
+		if (data->map[(int)ray->map_y][(int)ray->map_x] >= '1')
+		{
 			hit = 1;
+			if (data->map[(int)ray->map_y][(int)ray->map_x] == '2')
+				ray->door = 1;
+		}
 	}
 }
 
