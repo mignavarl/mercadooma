@@ -6,7 +6,7 @@
 /*   By: dlopez-l <dlopez-l@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/17 20:09:45 by dlopez-l          #+#    #+#             */
-/*   Updated: 2025/06/06 12:48:14 by dlopez-l         ###   ########.fr       */
+/*   Updated: 2025/06/24 17:06:33 by dlopez-l         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,15 @@ void	update_pixels(t_data *data, t_ray *ray, int x)
 	}
 }
 
+void	render_kart(t_data *data)
+{
+	mlx_image_t *kart;
+
+	//resize
+	kart = mlx_texture_to_image(data->game->mlx, data->we_texture);
+	mlx_image_to_window(data->game->mlx, data->game->img, 0, 0);
+}
+
 void	render_raycast(t_data *data)
 {
 	if (has_resized(data->win_height, data->game->mlx->height)
@@ -41,6 +50,7 @@ void	render_raycast(t_data *data)
 		data->win_width = data->game->mlx->width;
 	}
 	raycast(data->pj, data);
+	render_kart(data);
 }
 
 void	render(void *content)
