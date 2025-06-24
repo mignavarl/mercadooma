@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   render.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dlopez-l <dlopez-l@student.42madrid.com    +#+  +:+       +#+        */
+/*   By: mignavar <mignavar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/17 20:09:45 by dlopez-l          #+#    #+#             */
-/*   Updated: 2025/06/24 17:06:33 by dlopez-l         ###   ########.fr       */
+/*   Updated: 2025/06/24 17:18:41 by mignavar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,11 +32,8 @@ void	update_pixels(t_data *data, t_ray *ray, int x)
 
 void	render_kart(t_data *data)
 {
-	mlx_image_t *kart;
-
-	//resize
-	kart = mlx_texture_to_image(data->game->mlx, data->we_texture);
-	mlx_image_to_window(data->game->mlx, data->game->img, 0, 0);
+	mlx_resize_image(data->game->im_kart, data->win_width, data->win_height);
+	mlx_image_to_window(data->game->mlx, data->game->im_kart, 0, 0);
 }
 
 void	render_raycast(t_data *data)

@@ -6,7 +6,7 @@
 /*   By: mignavar <mignavar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/07 16:00:05 by mignavar          #+#    #+#             */
-/*   Updated: 2025/06/18 12:53:22 by mignavar         ###   ########.fr       */
+/*   Updated: 2025/06/24 17:12:09 by mignavar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,11 +78,13 @@ struct s_game
 	mlx_texture_t	*tx_east;
 	mlx_texture_t	*tx_west;
 	mlx_texture_t	*tx_door;
+	mlx_texture_t	*tx_kart;
 	mlx_image_t		*im_north;
 	mlx_image_t		*im_south;
 	mlx_image_t		*im_east;
 	mlx_image_t		*im_west;
 	mlx_image_t		*im_door;
+	mlx_image_t		*im_kart;
 	mlx_texture_t	*icon;
 };
 
