@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   render.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mignavar <mignavar@student.42.fr>          +#+  +:+       +#+        */
+/*   By: dlopez-l <dlopez-l@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/17 20:09:45 by dlopez-l          #+#    #+#             */
-/*   Updated: 2025/06/24 17:18:41 by mignavar         ###   ########.fr       */
+/*   Updated: 2025/06/24 17:55:55 by dlopez-l         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,12 +30,6 @@ void	update_pixels(t_data *data, t_ray *ray, int x)
 	}
 }
 
-void	render_kart(t_data *data)
-{
-	mlx_resize_image(data->game->im_kart, data->win_width, data->win_height);
-	mlx_image_to_window(data->game->mlx, data->game->im_kart, 0, 0);
-}
-
 void	render_raycast(t_data *data)
 {
 	if (has_resized(data->win_height, data->game->mlx->height)
@@ -45,9 +39,9 @@ void	render_raycast(t_data *data)
 			data->game->mlx->height);
 		data->win_height = data->game->mlx->height;
 		data->win_width = data->game->mlx->width;
+		mlx_resize_image(data->game->im_kart, data->win_width, data->win_height);
 	}
 	raycast(data->pj, data);
-	render_kart(data);
 }
 
 void	render(void *content)

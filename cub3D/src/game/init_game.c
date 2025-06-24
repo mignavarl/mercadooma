@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   init_game.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mignavar <mignavar@student.42.fr>          +#+  +:+       +#+        */
+/*   By: dlopez-l <dlopez-l@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/22 11:39:00 by mignavar          #+#    #+#             */
-/*   Updated: 2025/06/18 12:55:03 by mignavar         ###   ########.fr       */
+/*   Updated: 2025/06/24 17:56:04 by dlopez-l         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,11 @@ static void ft_error(void)
 {
 	fprintf(stderr, "%s", mlx_strerror(mlx_errno));
 	exit(EXIT_FAILURE);
+}
+
+void	render_kart(t_data *data)
+{
+	mlx_image_to_window(data->game->mlx, data->game->im_kart, 0, 0);
 }
 
 void	my_keyhook(mlx_key_data_t keydata, void* param)
@@ -64,6 +69,7 @@ bool	init_game(t_data *data)
 	mlx_image_to_window(data->game->mlx, data->game->img, 0, 0);
 	data->win_height = HEIGHT;
 	data->win_width = WIDTH;
+	render_kart(data);
 	render(data);
 	data->moved = 0;
 	mlx_loop_hook(data->game->mlx, render, data);
