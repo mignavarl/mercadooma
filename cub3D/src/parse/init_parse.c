@@ -6,7 +6,7 @@
 /*   By: dlopez-l <dlopez-l@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/08 11:47:35 by mignavar          #+#    #+#             */
-/*   Updated: 2025/06/25 11:45:17 by dlopez-l         ###   ########.fr       */
+/*   Updated: 2025/06/25 15:35:14 by dlopez-l         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,6 +54,8 @@ bool	extract_map(t_data *data)
 	while (line <= data->total_line)
 	{
 		data->map[m_line] = ft_strtrim(data->doc[line], "\n");
+		if (data->max_size < (int)ft_strlen(data->map[m_line]))
+			data->max_size = ft_strlen(data->map[m_line]);
 		m_line++;
 		line++;
 	}
