@@ -6,7 +6,7 @@
 /*   By: mignavar <mignavar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/14 12:47:29 by mignavar          #+#    #+#             */
-/*   Updated: 2025/06/18 15:26:13 by mignavar         ###   ########.fr       */
+/*   Updated: 2025/06/25 12:47:24 by mignavar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,15 +23,15 @@ bool	check_up_down(char **map, int line, int pos)
 {
 	if (map[line][pos] != ' ' && map[line][pos] != '1')
 	{
-		if ((int)ft_strlen(map[line - 1]) > pos
+		if ((int)(ft_strlen(map[line - 1]) - 1) > pos
 			&& map[line - 1][pos] == ' ')
 			return (FALSE);
-		if ((int)ft_strlen(map[line - 1]) < pos)
+		if ((int)(ft_strlen(map[line - 1]) - 1) < pos)
 			return (FALSE);
-		if ((int)ft_strlen(map[line + 1]) > pos
+		if ((int)(ft_strlen(map[line + 1]) - 1) > pos
 			&& map[line + 1][pos] == ' ')
 			return (FALSE);
-		if ((int)ft_strlen(map[line + 1]) < pos)
+		if ((int)(ft_strlen(map[line + 1]) - 1) < pos)
 			return (FALSE);
 	}
 	return (TRUE);
