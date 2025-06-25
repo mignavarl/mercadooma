@@ -6,13 +6,13 @@
 /*   By: dlopez-l <dlopez-l@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/22 11:39:00 by mignavar          #+#    #+#             */
-/*   Updated: 2025/06/24 17:56:04 by dlopez-l         ###   ########.fr       */
+/*   Updated: 2025/06/25 11:36:17 by dlopez-l         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
-static void ft_error(void)
+static void	ft_error(void)
 {
 	fprintf(stderr, "%s", mlx_strerror(mlx_errno));
 	exit(EXIT_FAILURE);
@@ -23,18 +23,15 @@ void	render_kart(t_data *data)
 	mlx_image_to_window(data->game->mlx, data->game->im_kart, 0, 0);
 }
 
-void	my_keyhook(mlx_key_data_t keydata, void* param)
+void	my_keyhook(mlx_key_data_t keydata, void *param)
 {
 	t_data	*data;
 
 	data = (t_data *)param;
-	if (keydata.key == MLX_KEY_W || \
-		keydata.key == MLX_KEY_S || \
-		keydata.key == MLX_KEY_A || \
-		keydata.key == MLX_KEY_D || \
-		keydata.key == MLX_KEY_RIGHT || \
-		keydata.key == MLX_KEY_LEFT || \
-		keydata.key == MLX_KEY_SPACE)
+	if (keydata.key == MLX_KEY_W || keydata.key == MLX_KEY_S
+		|| keydata.key == MLX_KEY_A || keydata.key == MLX_KEY_D
+		|| keydata.key == MLX_KEY_RIGHT || keydata.key == MLX_KEY_LEFT
+		|| keydata.key == MLX_KEY_SPACE)
 	{
 		if (keydata.action == MLX_PRESS)
 			key_pressed(data, keydata.key);

@@ -6,7 +6,7 @@
 /*   By: dlopez-l <dlopez-l@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/17 20:09:45 by dlopez-l          #+#    #+#             */
-/*   Updated: 2025/06/24 17:55:55 by dlopez-l         ###   ########.fr       */
+/*   Updated: 2025/06/25 11:32:25 by dlopez-l         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,11 +35,12 @@ void	render_raycast(t_data *data)
 	if (has_resized(data->win_height, data->game->mlx->height)
 		|| has_resized(data->win_width, data->game->mlx->width))
 	{
-		mlx_resize_image(data->game->img, data->game->mlx->width, \
+		mlx_resize_image(data->game->img, data->game->mlx->width,
 			data->game->mlx->height);
 		data->win_height = data->game->mlx->height;
 		data->win_width = data->game->mlx->width;
-		mlx_resize_image(data->game->im_kart, data->win_width, data->win_height);
+		mlx_resize_image(data->game->im_kart, data->win_width,
+			data->win_height);
 	}
 	raycast(data->pj, data);
 }

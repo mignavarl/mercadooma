@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mignavar <mignavar@student.42.fr>          +#+  +:+       +#+        */
+/*   By: dlopez-l <dlopez-l@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/07 16:00:05 by mignavar          #+#    #+#             */
-/*   Updated: 2025/06/24 17:12:09 by mignavar         ###   ########.fr       */
+/*   Updated: 2025/06/25 11:39:21 by dlopez-l         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -136,6 +136,7 @@ void	key_pressed(t_data *data, keys_t key);
 void	key_released(t_data *data, keys_t key);
 void	rotate_player(t_data *data, double rotdir);
 void	move_player(t_data *data);
+void	open_door(t_data *data);
 
 
 //----------- RENDER ----------------

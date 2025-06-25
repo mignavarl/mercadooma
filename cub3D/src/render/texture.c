@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   texture.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mignavar <mignavar@student.42.fr>          +#+  +:+       +#+        */
+/*   By: dlopez-l <dlopez-l@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/30 11:59:18 by dlopez-l          #+#    #+#             */
-/*   Updated: 2025/06/18 12:38:55 by mignavar         ###   ########.fr       */
+/*   Updated: 2025/06/25 11:30:27 by dlopez-l         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,13 +36,23 @@ void	get_texture_index(t_data *data, t_ray *ray)
 	}
 }
 
+uint32_t	get_texture_color(int tex_x, int tex_y, t_data *data)
+{
+	int		index;
+	uint8_t	*pixel;
+
+	index = (tex_y * TX_WIDTH + tex_x) * data->game->tx_hit->bytes_per_pixel;
+	pixel = &data->game->tx_hit->pixels[index];
+	return ((pixel[0] << 24) | (pixel[1] << 16) | (pixel[2] << 8) | pixel[3]);
+}
+
 void	texture_paint(t_data *data, t_ray *ray, int x, int *y)
 {
-	int	tex_x;
-	int	tex_y;
-	double	step;
-	double	tex_pos;
-	uint32_t color;
+	int			tex_x;
+	int			tex_y;
+	double		step;
+	double		tex_pos;
+	uint32_t	color;
 
 	get_texture_index(data, ray);
 	tex_x = (int)(ray->wall_x * (double)TX_WIDTH);
@@ -56,13 +66,7 @@ void	texture_paint(t_data *data, t_ray *ray, int x, int *y)
 	{
 		tex_y = (int) tex_pos & (TX_HEIGHT - 1);
 		tex_pos += step;
-		int index = (tex_y * TX_WIDTH + tex_x) * data->game->tx_hit->bytes_per_pixel;
-		uint8_t* pixel = &data->game->tx_hit->pixels[index];
-		uint8_t r = pixel[0];
-		uint8_t g = pixel[1];
-		uint8_t b = pixel[2];
-		uint8_t a = pixel[3];
-		color = (r << 24) | (g << 16) | (b << 8) | a;
+		color = get_texture_color(tex_x, tex_y, data);
 		mlx_put_pixel(data->game->img, x, (*y), color);
 		(*y)++;
 	}
