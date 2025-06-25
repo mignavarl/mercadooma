@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dlopez-l <dlopez-l@student.42madrid.com    +#+  +:+       +#+        */
+/*   By: mignavar <mignavar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/07 16:00:05 by mignavar          #+#    #+#             */
-/*   Updated: 2025/06/25 11:39:21 by dlopez-l         ###   ########.fr       */
+/*   Updated: 2025/06/25 12:13:19 by mignavar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -125,7 +125,6 @@ struct s_ray
 	int		door;
 };
 
-
 //----------- MAIN ------------------
 void	free_all(t_data *data);
 
@@ -137,7 +136,6 @@ void	key_released(t_data *data, keys_t key);
 void	rotate_player(t_data *data, double rotdir);
 void	move_player(t_data *data);
 void	open_door(t_data *data);
-
 
 //----------- RENDER ----------------
 void	render(void *data);
@@ -163,8 +161,7 @@ bool	extract_texture(char **doc, t_data *data);
 void	free_texture(t_data *data, int tx);
 bool	init_parse(t_data *data, char *arg);
 bool	parse_map(t_data *data);
-void	my_keyhook(mlx_key_data_t keydata, void* param);
-
+void	my_keyhook(mlx_key_data_t keydata, void *param);
 
 //find_rgb
 bool	check_str_color(char *color);
