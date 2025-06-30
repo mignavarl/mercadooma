@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   init_parse.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dlopez-l <dlopez-l@student.42madrid.com    +#+  +:+       +#+        */
+/*   By: mignavar <mignavar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/08 11:47:35 by mignavar          #+#    #+#             */
-/*   Updated: 2025/06/25 15:35:14 by dlopez-l         ###   ########.fr       */
+/*   Updated: 2025/06/26 12:00:41 by mignavar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,8 +54,8 @@ bool	extract_map(t_data *data)
 	while (line <= data->total_line)
 	{
 		data->map[m_line] = ft_strtrim(data->doc[line], "\n");
-		if (data->max_size < (int)ft_strlen(data->map[m_line]))
-			data->max_size = ft_strlen(data->map[m_line]);
+		if (data->max_size < (int)ft_strlen(data->map[m_line]) + 3)
+			data->max_size = ft_strlen(data->map[m_line]) + 3;
 		m_line++;
 		line++;
 	}
@@ -81,7 +81,6 @@ void	player_pos(t_data *data, char **map)
 				data->pj->pos_x = pos;
 				data->pj->pos_y = line;
 				data->pj->view = map[line][pos];
-				map[line][pos] = 0;
 				init_player_dir(data);
 				return ;
 			}
@@ -98,6 +97,8 @@ bool	init_parse(t_data *data, char *arg)
 	if (!extract_map(data))
 		return (FALSE);
 	if (!parse_map(data))
+		return (FALSE);
+	if (!fill_map(data))
 		return (FALSE);
 	player_pos(data, data->map);
 	if (!extract_texture(data->doc, data))

@@ -23,13 +23,15 @@ SRCS = main.c\
 	$(PARS_DIR)extract_colors.c\
 	$(PARS_DIR)extract_rgba.c\
 	$(PARS_DIR)extract_textures.c\
+	$(PARS_DIR)fill_map.c\
 	$(PARS_DIR)find_rgb.c\
 	$(PARS_DIR)init_parse.c\
 	$(PARS_DIR)parse_map.c\
 	$(REND_DIR)render.c\
 	$(REND_DIR)raycast.c\
 	$(REND_DIR)texture.c\
-	$(REND_DIR)resize_utils.c
+	$(REND_DIR)resize_utils.c\
+	$(REND_DIR)raycast_utils.c
 #~~~~~~ Obj Files ~~~~~~~
 OBJ_FILES = $(SRCS:.c=.o)
 OBJS = $(addprefix $(OBJ_DIR), $(OBJ_FILES))

@@ -1,7 +1,7 @@
 SO ./textures/grey.png
 F 166,27,131
 C 225,30,30
-EA ./textures/foton.png
+EA ./textures/yellow.png
 NO ./textures/Pink.png
 WE ./textures/yellow.png
 

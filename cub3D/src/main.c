@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dlopez-l <dlopez-l@student.42madrid.com    +#+  +:+       +#+        */
+/*   By: mignavar <mignavar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/07 15:59:40 by mignavar          #+#    #+#             */
-/*   Updated: 2025/06/25 15:34:14 by dlopez-l         ###   ########.fr       */
+/*   Updated: 2025/06/27 13:05:32 by mignavar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,6 +47,8 @@ void	free_all(t_data *data)
 	free(data->we_texture);
 	free(data->c_color);
 	free(data->f_color);
+	free(data->pj);
+	free(data);
 }
 
 int	main(int argc, char **argv)
@@ -59,10 +61,16 @@ int	main(int argc, char **argv)
 		return (print_error("Extension not valid"), 1);
 	data = ft_calloc(1, sizeof(t_data));
 	data->total_line = count_line(argv[1]);
-	if (data->total_line < 10)
+	if (data->total_line < 9)
+	{
+		free(data);
 		return (print_error("Invalid document"), 1);
+	}
 	if (!init_parse(data, argv[1]))
+	{
+		free(data);
 		return (1);
+	}
 	if (!init_game(data))
 		return (1);
 	free_all(data);

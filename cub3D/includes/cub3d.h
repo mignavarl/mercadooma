@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dlopez-l <dlopez-l@student.42madrid.com    +#+  +:+       +#+        */
+/*   By: mignavar <mignavar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/07 16:00:05 by mignavar          #+#    #+#             */
-/*   Updated: 2025/06/25 15:35:08 by dlopez-l         ###   ########.fr       */
+/*   Updated: 2025/06/26 11:58:48 by mignavar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -145,6 +145,8 @@ void	render_raycast(t_data *data);
 void	update_pixels(t_data *data, t_ray *ray, int x);
 bool	has_resized(int win, int new);
 void	texture_paint(t_data *data, t_ray *ray, int x, int *y);
+int		check_hit(t_data *data, t_ray *ray);
+bool	check_ray(t_data *data, int map_x, int map_y);
 
 //textures
 bool	save_textures(t_game *game, t_data *data);
@@ -163,6 +165,7 @@ void	free_texture(t_data *data, int tx);
 bool	init_parse(t_data *data, char *arg);
 bool	parse_map(t_data *data);
 void	my_keyhook(mlx_key_data_t keydata, void *param);
+bool	fill_map(t_data *data);
 
 //find_rgb
 bool	check_str_color(char *color);

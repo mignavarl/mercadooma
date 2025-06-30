@@ -6,7 +6,7 @@
 /*   By: mignavar <mignavar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/17 12:17:22 by mignavar          #+#    #+#             */
-/*   Updated: 2025/04/17 18:00:35 by mignavar         ###   ########.fr       */
+/*   Updated: 2025/06/27 12:38:18 by mignavar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,10 @@ char	*find_red(char *red, char *color)
 		return (NULL);
 	i = ft_atoi(red);
 	if (i > 255 || i < 0)
+	{
+		free(red);
 		return (NULL);
+	}
 	return (red);
 }
 
@@ -45,7 +48,10 @@ char	*find_green(char *green, char *color)
 		return (NULL);
 	i = ft_atoi(green);
 	if (i > 255 || i < 0)
+	{
+		free(green);	
 		return (NULL);
+	}
 	return (green);
 }
 
@@ -66,7 +72,10 @@ char	*find_blue(char *blue, char *color)
 		return (NULL);
 	i = ft_atoi(blue);
 	if (i > 255 || i < 0)
+	{
+		free(blue);
 		return (NULL);
+	}
 	return (blue);
 }
 

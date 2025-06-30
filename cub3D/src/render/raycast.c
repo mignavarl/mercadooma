@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   raycast.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dlopez-l <dlopez-l@student.42madrid.com    +#+  +:+       +#+        */
+/*   By: mignavar <mignavar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/17 20:03:00 by dlopez-l          #+#    #+#             */
-/*   Updated: 2025/06/25 22:33:00 by dlopez-l         ###   ########.fr       */
+/*   Updated: 2025/06/26 11:57:56 by mignavar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,12 +47,6 @@ void	calc_dda(t_ray *ray, t_pj *player)
 	}
 }
 
-bool	check_ray(t_data *data, int map_x, int map_y)
-{
-	return (map_y >= 0 && map_y <= data->map_lines && map_x >= 0
-		&& map_x <= (int)ft_strlen(data->map[map_y]));
-}
-
 void	loop_dda(t_ray *ray, t_data *data)
 {
 	int	hit;
@@ -75,13 +69,7 @@ void	loop_dda(t_ray *ray, t_data *data)
 		}
 		if (!check_ray(data, ray->map_x, ray->map_y))
 			break ;
-		if (data->map[(int)ray->map_y][(int)ray->map_x] >= '1')
-		{
-			hit = 1;
-			if (data->map[(int)ray->map_y][(int)ray->map_x] == '2')
-				ray->door = 1;
-		}
-
+		hit = check_hit(data, ray);
 	}
 }
 

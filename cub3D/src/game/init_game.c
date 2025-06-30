@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   init_game.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dlopez-l <dlopez-l@student.42madrid.com    +#+  +:+       +#+        */
+/*   By: mignavar <mignavar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/22 11:39:00 by mignavar          #+#    #+#             */
-/*   Updated: 2025/06/25 11:36:17 by dlopez-l         ###   ########.fr       */
+/*   Updated: 2025/06/27 13:06:41 by mignavar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,10 +59,10 @@ bool	init_game(t_data *data)
 		ft_error();
 	data->moved = 1;
 	if (!save_textures(data->game, data))
-		return (free_all(data), FALSE);
+		return (free(data->game), free_all(data), FALSE);
 	mlx_set_icon(data->game->mlx, data->game->icon);
 	if (!save_images(data->game))
-		return (free_all(data), FALSE);
+		return (free(data->game), free_all(data), FALSE);
 	mlx_image_to_window(data->game->mlx, data->game->img, 0, 0);
 	data->win_height = HEIGHT;
 	data->win_width = WIDTH;
@@ -74,5 +74,5 @@ bool	init_game(t_data *data)
 	mlx_loop(data->game->mlx);
 	mlx_terminate(data->game->mlx);
 	free_game_textures(data->game);
-	return (TRUE);
+	return (free(data->game), TRUE);
 }
